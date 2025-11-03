@@ -4,38 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2c1d0f9-3f7a-4a90-9e61-668eafab54e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/agencia-de-viajes.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d59dd18c-b395-4e61-8853-802935a2e0a8" name="Changes" comment="Unversioned files">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agenciaDjango/agenciaDjango/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/agenciaDjango/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agenciaDjango/agenciaDjango/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/agenciaDjango/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
+  "associatedIndex": 5
 }]]></component>
-  <component name="ProjectId" id="34yLm5PSXziJ45eVEcJmoowgdSs" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="34yV8niaCUbBeRpcE2iEhCUjAjo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,16 +66,29 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b2c1d0f9-3f7a-4a90-9e61-668eafab54e1" name="Changes" comment="" />
-      <created>1762181021199</created>
+      <changelist id="d59dd18c-b395-4e61-8853-802935a2e0a8" name="Changes" comment="" />
+      <created>1762185641381</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1762181021199</updated>
-      <workItem from="1762181033754" duration="837000" />
+      <updated>1762185641381</updated>
+      <workItem from="1762185646147" duration="3485000" />
     </task>
+    <task id="LOCAL-00001" summary="Unversioned files">
+      <option name="closed" value="true" />
+      <created>1762185762018</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762185762018</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Unversioned files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unversioned files" />
   </component>
 </project>

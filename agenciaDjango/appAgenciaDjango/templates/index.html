@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}Agencia de Viajes{% endblock %}
+
+{% block contenido %}
+<h2>Listado de destinos</h2>
+{% if lista_destinos %}
+<ul>
+    {% for d in lista_destinos %}
+    <li><a href="{% url 'index' d.id %}">{{ d.nombre }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay destinos todavía.</p>
+{% endif %}
+{% endblock %}
