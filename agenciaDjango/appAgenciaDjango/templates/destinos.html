@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/destinos.css' %}">
+{% endblock %}
+
+{% block titulo %}Destinos{% endblock %}
+
+
+{% block contenido %}
+
+<h2>Listado de destinos</h2>
+{% if destinos %}
+<ul>
+    {% for d in destinos %}
+    <li><a href="{% url 'destino' d %}">{{ d }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay destinos todavía.</p>
+{% endif %}
+
+{% endblock %}

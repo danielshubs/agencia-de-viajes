@@ -5,8 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-    <title>{% block titulo %}Gestor de Empleados{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- Espacio para incluir CSS adicional en páginas específicas -->
+    {% block extra_css %}{% endblock %}
+    <title>{% block titulo %}Agencia de Viajes{% endblock %}</title>
 </head>
 
 <body>
@@ -14,15 +16,60 @@
         <nav class="navbar">
             <ul>
                 <li><a href="{% url 'index' %}">Inicio</a></li>
-                <li><a href="{% url 'index' %}">Destinos</a></li>
-                <li><a href="{% url 'index' %}">Reservar</a></li>
+                <li><a href="{% url 'destinos' %}">Destinos</a></li>
+                <li><a href="{% url 'reservar' %}">Reservar</a></li>
             </ul>
         </nav>
     </header>
+
     <div id="content">
-        <h1>Agencia de Viajes</h1>
+        <!-- Contenedor que cambia según la página -->
         {% block contenido %}{% endblock %}
     </div>
+
+    <footer>
+        <div class="footer-info">
+            <img src="" alt="Logotipo" width="100">
+            &nbsp;&nbsp;
+            <p>&copy; 2025 Agencia de Viajes | Todos los derechos reservados</p>
+        </div>
+
+        <div class="footer-columns">
+            <div class="footer-column">
+                <strong>Destinos</strong>
+                <hr>
+                <ul class="footer-list">
+                    {% if destinos %}
+                        {% for d in destinos %}
+                        <li><a href="{% url 'destino' d %}">{{ d }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No hay destinos disponibles.</li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <strong>Compañía</strong>
+                <hr>
+                <ul class="footer-list">
+                    <li><a href="index.html">Quiénes somos</a></li>
+                    <li><a href="#">Solicita información</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <strong>Planifica tu viaje</strong>
+                <hr>
+                <ul class="footer-list">
+                    <li><a href="#">Llámanos al +34 629 123 456</a></li>
+                    <li><a href="#">Contáctanos por WhatsApp</a></li>
+                    <li><a href="#">Haz una reserva</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

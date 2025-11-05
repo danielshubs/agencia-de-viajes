@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/destinos.css' %}">
+{% endblock %}
+
+{% block titulo %}Destino{% endblock %}
+
+
+{% block contenido %}
+
+<h2>Destino seleccionado</h2>
+
+<h1>{{ destino }}</h1>
+
+<button>
+    <a href="{% url 'reservar' destino %}">Reservar viaje a {{ destino }}</a>
+</button>
+
+{% endblock %}
