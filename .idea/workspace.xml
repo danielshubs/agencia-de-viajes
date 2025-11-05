@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d59dd18c-b395-4e61-8853-802935a2e0a8" name="Changes" comment="Unversioned files">
+      <change beforePath="$PROJECT_DIR$/.idea/agencia-de-viajes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/agencia-de-viajes.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agenciaDjango/agenciaDjango/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/agenciaDjango/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agenciaDjango/agenciaDjango/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/agenciaDjango/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +31,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="34yV8niaCUbBeRpcE2iEhCUjAjo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,19 +45,28 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/beni7/Downloads/Deusto/agencia-de-viajes/agenciaDjango",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\beni7\Downloads\Deusto\agencia-de-viajes" />
+      <recent name="C:\Users\beni7\Downloads\Deusto\agencia-de-viajes\agenciaDjango" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.14475.56" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
+        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
       </set>
     </attachedChunks>
   </component>
@@ -72,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1762185641381</updated>
       <workItem from="1762185646147" duration="3485000" />
+      <workItem from="1762362026093" duration="1235000" />
     </task>
     <task id="LOCAL-00001" summary="Unversioned files">
       <option name="closed" value="true" />
