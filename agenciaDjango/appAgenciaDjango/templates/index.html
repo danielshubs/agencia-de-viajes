@@ -3,14 +3,17 @@
 {% block titulo %}Agencia de Viajes{% endblock %}
 
 {% block contenido %}
-<h2>Listado de destinos</h2>
-{% if lista_destinos %}
-<ul>
-    {% for d in lista_destinos %}
-    <li><a href="{% url 'index' d.id %}">{{ d.nombre }}</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No hay destinos todavía.</p>
-{% endif %}
+    
+<h2>Listado de Viajes Disponibles </h2>
+    {% if lista_viajes %}
+        <ul>
+            {% for viaje in lista_viajes %}
+                 <li><a href="{% url 'detalle_viaje' viaje.viajeID %}" >{{ viaje}}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay destinos todavía.</p>
+    {% endif %}
+    
 {% endblock %}
+
