@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Title</title>
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <title>{% block titulo %}Gestor de Empleados{% endblock %}</title>
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'index' %}">Destinos</a></li>
+                <li><a href="{% url 'index' %}">Reservar</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div id="content">
+        <h1>Detalles Viaje </h1>
+    
+        {% block detalles %}
+            <h2>{{ viaje.nombre }}</h2>
+            <p><strong>Destino:</strong> {{ viaje.destino }}</p>
+            <p><strong>Duración:</strong> {{ viaje.duracion }} días</p>
+            <p><strong>Precio:</strong> ${{ viaje.precio }}</p>
+            <p><strong>Descripción:</strong> {{ viaje.descripcion }}</p>
+        {% endblock %}
+    
+    </div>
+    
+    
+    
+
+</body>
+</html>

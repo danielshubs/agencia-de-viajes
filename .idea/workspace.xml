@@ -12,6 +12,9 @@
       <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/destino.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/destinos.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/reservar.html" afterDir="false" />
+    <list default="true" id="d59dd18c-b395-4e61-8853-802935a2e0a8" name="Changes" comment="Unversioned files">
+      <change beforePath="$PROJECT_DIR$/.idea/agencia-de-viajes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/agencia-de-viajes.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/estilos.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/base.html" afterDir="false" />
@@ -27,9 +30,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -41,9 +44,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
   <component name="ProjectId" id="34yV8niaCUbBeRpcE2iEhCUjAjo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,15 +59,23 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/beni7/Downloads/Deusto/agencia-de-viajes/agenciaDjango",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\beni7\Downloads\Deusto\agencia-de-viajes" />
+      <recent name="C:\Users\beni7\Downloads\Deusto\agencia-de-viajes\agenciaDjango" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -82,6 +93,8 @@
       <updated>1762185641381</updated>
       <workItem from="1762185646147" duration="5761000" />
       <workItem from="1762333617949" duration="12159000" />
+      <workItem from="1762185646147" duration="3485000" />
+      <workItem from="1762362026093" duration="1235000" />
     </task>
     <task id="LOCAL-00001" summary="Unversioned files">
       <option name="closed" value="true" />
