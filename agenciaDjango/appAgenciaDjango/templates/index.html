@@ -1,16 +1,41 @@
 {% extends "base.html" %}
 
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
 {% block titulo %}Agencia de Viajes{% endblock %}
 
 {% block contenido %}
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Descubre el mundo con Nombre</h1>
+        <p>Viajes únicos, experiencias inolvidables y atención personalizada</p>
+        <a href="{% url 'destinos' %}" class="btn">Explora nuestros destinos</a>
+    </div>
+</section>
+
+<section class="sobre-nosotros">
+    <h2>Sobre Nosotros</h2>
+    <p>
+        En <strong>Nombre</strong>, creemos que viajar es mucho más que moverse de un lugar a otro.
+        Es descubrir nuevas culturas, sabores, paisajes y maneras de entender el mundo.
+        Desde 2010, ayudamos a miles de viajeros a planificar aventuras a medida,
+        con itinerarios cuidadosamente diseñados, alojamiento de calidad y el mejor asesoramiento.
+        Nuestra misión es ofrecer viajes auténticos, sostenibles y transformadores.
+    </p>
+</section>
     
-<h2>Listado de Viajes Disponibles </h2>
-    {% if lista_viajes %}
+<h2>Destinos Populares </h2>
+    {% if destinos %}
         <ul>
-            {% for viaje in lista_viajes %}
-                 <li><a href="{% url 'detalle_viaje' viaje.viajeID %}" >{{ viaje}}</a></li>
+            {% for d in destinos %}
+                <li><a href="{% url 'destino' d.destinoID %}" >{{ d }}</a></li>
             {% endfor %}
         </ul>
+        <button>Explora más destinos</button>
     {% else %}
         <p>No hay destinos todavía.</p>
     {% endif %}

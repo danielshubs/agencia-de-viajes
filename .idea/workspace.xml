@@ -4,21 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d59dd18c-b395-4e61-8853-802935a2e0a8" name="Changes" comment="Virtual environment">
-      <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/destinos.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/reservar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/destino.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/destinos.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/reservar.html" afterDir="false" />
-    <list default="true" id="d59dd18c-b395-4e61-8853-802935a2e0a8" name="Changes" comment="Unversioned files">
-      <change beforePath="$PROJECT_DIR$/.idea/agencia-de-viajes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/agencia-de-viajes.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d59dd18c-b395-4e61-8853-802935a2e0a8" name="Changes" comment="Páginas de destinos y reserva creada.&#10;Página principal y elementos comunes en todas las páginas mejorados">
+      <change afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/images/bali.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/estilos.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/destinos.css" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/destinos.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/static/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/destino.html" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/destino.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/destinos.html" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/destinos.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/viaje_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/templates/viaje_details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/agenciaDjango/appAgenciaDjango/views.py" afterDir="false" />
     </list>
@@ -30,9 +25,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Python Script" />
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -44,9 +39,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="34yV8niaCUbBeRpcE2iEhCUjAjo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -59,21 +54,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/beni7/Downloads/Deusto/agencia-de-viajes/agenciaDjango",
+    "last_opened_file_path": "C:/Users/daniel.sanchez.r/PycharmProjects/agencia-de-viajes/agenciaDjango/appAgenciaDjango/static/img",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\beni7\Downloads\Deusto\agencia-de-viajes" />
-      <recent name="C:\Users\beni7\Downloads\Deusto\agencia-de-viajes\agenciaDjango" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\daniel.sanchez.r\PycharmProjects\agencia-de-viajes\agenciaDjango\appAgenciaDjango\static\img" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -92,9 +85,8 @@
       <option name="presentableId" value="Default" />
       <updated>1762185641381</updated>
       <workItem from="1762185646147" duration="5761000" />
-      <workItem from="1762333617949" duration="12159000" />
-      <workItem from="1762185646147" duration="3485000" />
-      <workItem from="1762362026093" duration="1235000" />
+      <workItem from="1762333617949" duration="16534000" />
+      <workItem from="1762512896198" duration="6724000" />
     </task>
     <task id="LOCAL-00001" summary="Unversioned files">
       <option name="closed" value="true" />
@@ -120,16 +112,36 @@
       <option name="project" value="LOCAL" />
       <updated>1762194008075</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Páginas de destinos y reserva creada.&#10;Página principal y elementos comunes en todas las páginas mejorados">
+      <option name="closed" value="true" />
+      <created>1762365208225</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762365208225</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Unversioned files" />
     <MESSAGE value="Creación de los primeros html y css.&#10;Primeros pasos en urls.py y views.py." />
     <MESSAGE value="Virtual environment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Virtual environment" />
+    <MESSAGE value="Páginas de destinos y reserva creada.&#10;Página principal y elementos comunes en todas las páginas mejorados" />
+    <option name="LAST_COMMIT_MESSAGE" value="Páginas de destinos y reserva creada.&#10;Página principal y elementos comunes en todas las páginas mejorados" />
   </component>
 </project>

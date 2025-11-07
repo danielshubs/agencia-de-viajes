@@ -13,10 +13,26 @@
 
 <h2>Destino seleccionado</h2>
 
-<h1>{{ destino }}</h1>
+<h1>{{ destino.nombre }}</h1>
 
 <button>
     <a href="{% url 'reservar' destino %}">Reservar viaje a {{ destino }}</a>
 </button>
+
+<section class="destinos">
+    {% for v in viajes %}
+    <article class="card">
+        <a href="{% url 'detalle_viaje' v.viajeID %}">
+            <img src="{% static 'images/bali.jpg' %}" alt="{{ destino.nombre }}">
+            <div class="texto">
+                <h3>{{ destino.nombre }}</h3>
+            </div>
+            <div class="precio">Desde {{ v.precio }}</div>
+            <div class="duracion">{{ v.fecha_regreso }} - {{ v.fecha_salida }} días</div>
+        </a>
+    </article>
+    {% endfor %}
+</section>
+
 
 {% endblock %}

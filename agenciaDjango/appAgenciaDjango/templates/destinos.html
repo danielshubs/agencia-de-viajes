@@ -15,7 +15,7 @@
 {% if destinos %}
 <ul>
     {% for d in destinos %}
-    <li><a href="{% url 'destino' d %}">{{ d }}</a></li>
+    <li><a href="{% url 'destino' d.destinoID %}">{{ d.nombre }}</a></li>
     {% endfor %}
 </ul>
 {% else %}
