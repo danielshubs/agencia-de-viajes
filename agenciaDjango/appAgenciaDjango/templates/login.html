@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    
+    
+    
+<link rel="stylesheet" href="{% static 'css/reservar.css' %}">
+{% endblock %}
+
+{% block titulo %}Init Sesion{% endblock %}
+
+{% block contenido %}
+
+
+<section class="login-container">
+        <h2>Iniciar Sesión</h2>
+    
+        <form action="{% url 'login_enter' %}" method="POST">
+            {% csrf_token %}    
+            <label for="mail">Correo</label>
+            <input type="email" id="mail" name="mail" placeholder="Ingrese su correo" required>
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+    
+        <div class="register-link">
+            <p>¿No tienes una cuenta? <a href="#">Regístrate aquí</a></p>
+        </div>
+</section>
+    
+{% endblock %}
+
