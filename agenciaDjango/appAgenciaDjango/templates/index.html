@@ -21,11 +21,13 @@
 </head>
 
 <body>
-    <!-- HEADER -->
+    <!-- Cabecera -->
     <header>
         <div class="menu-container">
             <div class="logo-section">
-                <div class="logo">TD</div>
+                <div class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="TravelDream Logo" class="logo-image">
+                </div>
                 <div class="company-name">TravelDream</div>
             </div>
             <nav class="nav-menu">
@@ -39,10 +41,10 @@
         </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- Contenido principal -->
     <main id="content">
         {% block contenido %}
-        <!-- Sección Hero -->
+        <!-- Sección Frase Inspiradora -->
         <section class="hero-section">
             <div class="hero-image"></div>
             <div class="hero-content">
@@ -80,25 +82,41 @@
                 
                 {% if destinos %}
                     <div class="destinations-grid">
-                        {% for destino in destinos %}
+                        <!-- París con imagen local -->
                         <div class="destination-card">
                             <div class="destination-image">
-                                {% if destino.imagen %}
-                                    <img src="{{ destino.imagen.url }}" alt="{{ destino.nombre }}">
-                                {% else %}
-                                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="{{ destino.nombre }}">
-                                {% endif %}
+                                <img src="{% static 'images/paris.jpg' %}?v=2" alt="París">
                             </div>
                             <div class="destination-info">
-                                <h3 class="destination-name">{{ destino.nombre }}</h3>
-                                <p class="destination-description">{{ destino.descripcion|truncatewords:20 }}</p>
-                                <div class="destination-price">Desde €{{ destino.precio_min }}</div>
+                                <h3 class="destination-name">París, Francia</h3>
+                                <p class="destination-description">La ciudad del amor te espera con su encanto único, monumentos icónicos y exquisita gastronomía.</p>
+                                <div class="destination-price">Desde €650</div>
                             </div>
                         </div>
-                        {% endfor %}
-                    </div>
-                    <div style="text-align: center;">
-                        <a href="{% url 'destinos' %}" class="explore-button">Explora más destinos</a>
+                        
+                        <!-- Tokio con imagen local -->
+                        <div class="destination-card">
+                            <div class="destination-image">
+                                <img src="{% static 'images/tokio.jpg' %}?v=2" alt="Tokio">
+                            </div>
+                            <div class="destination-info">
+                                <h3 class="destination-name">Tokio, Japón</h3>
+                                <p class="destination-description">Descubre la perfecta armonía entre tradición y modernidad en la vibrante capital japonesa.</p>
+                                <div class="destination-price">Desde €1,200</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bali con imagen local -->
+                        <div class="destination-card">
+                            <div class="destination-image">
+                                <img src="{% static 'images/bali.jpg' %}?v=2" alt="Bali">
+                            </div>
+                            <div class="destination-info">
+                                <h3 class="destination-name">Bali, Indonesia</h3>
+                                <p class="destination-description">Playas de ensueño, templos ancestrales y una cultura fascinante te esperan en esta isla paradisíaca.</p>
+                                <div class="destination-price">Desde €850</div>
+                            </div>
+                        </div>
                     </div>
                 {% else %}
                     <div class="destinations-grid">
@@ -148,7 +166,6 @@
                     <div class="testimonial-card">
                         <p class="testimonial-text">"Mi viaje a Japón con TravelDream superó todas mis expectativas. Cada detalle estaba cuidadosamente planeado y pude disfrutar sin preocupaciones."</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar">MC</div>
                             <div class="author-info">
                                 <h4>María Cortés</h4>
                                 <p>Viajó a Tokio</p>
@@ -158,7 +175,6 @@
                     <div class="testimonial-card">
                         <p class="testimonial-text">"Excelente servicio al cliente. Me ayudaron a planificar el viaje de mis sueños a Bali y todo salió perfecto. ¡Definitivamente volveré a confiar en ellos!"</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar">JG</div>
                             <div class="author-info">
                                 <h4>Javier Gómez</h4>
                                 <p>Viajó a Bali</p>
@@ -168,7 +184,6 @@
                     <div class="testimonial-card">
                         <p class="testimonial-text">"Gracias a TravelDream pude disfrutar de una luna de miel inolvidable en París. Su atención personalizada hizo toda la diferencia."</p>
                         <div class="testimonial-author">
-                            <div class="author-avatar">LR</div>
                             <div class="author-info">
                                 <h4>Laura Rodríguez</h4>
                                 <p>Viajó a París</p>
@@ -179,7 +194,7 @@
             </div>
         </section>
         
-        <!-- Sección CTA -->
+        <!-- Sección reservar -->
         <section class="cta-section">
             <div class="cta-container">
                 <h2 class="cta-title">¿Listo para tu próxima aventura?</h2>
@@ -190,7 +205,7 @@
         {% endblock %}
     </main>
 
-    <!-- MENSAJES -->
+    <!-- mensajes -->
     {% if messages %}
     <div class="messages-container">
         {% for message in messages %}
@@ -201,7 +216,7 @@
     </div>
     {% endif %}
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">

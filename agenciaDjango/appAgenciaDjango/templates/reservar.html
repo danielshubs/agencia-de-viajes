@@ -17,11 +17,13 @@
 </head>
 
 <body>
-    <!-- HEADER -->
+    <!-- cabecera -->
     <header>
         <div class="menu-container">
             <div class="logo-section">
-                <div class="logo">TD</div>
+                <div class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="TravelDream Logo" class="logo-image">
+                </div>
                 <div class="company-name">TravelDream</div>
             </div>
             <nav class="nav-menu">
@@ -35,7 +37,7 @@
         </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- maini -->
     <main id="content">
         {% block background_image %}
         <div class="background-image"></div>
@@ -64,16 +66,6 @@
                                     {{ d.nombre }}, {{ d.pais }}
                                 </option>
                             {% endfor %}
-                        {% else %}
-                            <!-- Destinos predeterminados si no hay en la base de datos -->
-                            <option value="paris">París, Francia</option>
-                            <option value="tokyo">Tokio, Japón</option>
-                            <option value="newyork">Nueva York, Estados Unidos</option>
-                            <option value="rome">Roma, Italia</option>
-                            <option value="bali">Bali, Indonesia</option>
-                            <option value="sydney">Sídney, Australia</option>
-                            <option value="barcelona">Barcelona, España</option>
-                            <option value="london">Londres, Reino Unido</option>
                         {% endif %}
                     </select>
                 </div>
@@ -107,7 +99,7 @@
         {% endblock %}
     </main>
 
-    <!-- MENSAJES -->
+    <!-- mensjaes -->
     {% if messages %}
     <div class="messages-container">
         {% for message in messages %}
@@ -118,7 +110,7 @@
     </div>
     {% endif %}
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">

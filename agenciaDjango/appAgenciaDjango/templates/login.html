@@ -19,11 +19,13 @@
 </head>
 
 <body>
-    <!-- HEADER -->
+    <!-- cabecera -->
     <header>
         <div class="menu-container">
             <div class="logo-section">
-                <div class="logo">TD</div>
+                <div class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="TravelDream Logo" class="logo-image">
+                </div>
                 <div class="company-name">TravelDream</div>
             </div>
             <nav class="nav-menu">
@@ -37,7 +39,7 @@
         </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- main -->
     <main id="content">
         {% block background_image %}
         <div class="background-image"></div>
@@ -71,7 +73,7 @@
         {% endblock %}
     </main>
 
-    <!-- MENSAJES -->
+    <!-- mensajes -->
     {% if messages %}
     <div class="messages-container">
         {% for message in messages %}
@@ -82,7 +84,7 @@
     </div>
     {% endif %}
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">

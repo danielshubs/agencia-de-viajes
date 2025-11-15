@@ -18,11 +18,13 @@
 </head>
 
 <body>
-    <!-- HEADER -->
+    <!-- cabecera -->
     <header>
         <div class="menu-container">
             <div class="logo-section">
-                <div class="logo">TD</div>
+                <div class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="TravelDream Logo" class="logo-image">
+                </div>
                 <div class="company-name">TravelDream</div>
             </div>
             <nav class="nav-menu">
@@ -36,7 +38,7 @@
         </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- contenido principal -->
     <main id="content">
         {% block contenido %}
         <div class="destinos-hero">
@@ -45,7 +47,7 @@
         </div>
         
         <div class="destinos-grid">
-            <!-- TOKIO -->
+            <!-- tokio -->
             <div class="destino-card">
                 <div class="destino-image">
                     <img src="{% static 'images/tokio.jpg' %}?v=2" alt="Tokio">
@@ -62,7 +64,7 @@
                 </div>
             </div>
             
-            <!-- PARÍS -->
+            <!-- paris -->
             <div class="destino-card">
                 <div class="destino-image">
                     <img src="{% static 'images/Paris.jpg' %}?v=2" alt="París">
@@ -79,7 +81,7 @@
                 </div>
             </div>
             
-            <!-- BALI -->
+            <!-- bali -->
             <div class="destino-card">
                 <div class="destino-image">
                     <img src="{% static 'images/bali.jpg' %}?v=2" alt="Bali">
@@ -99,7 +101,7 @@
         {% endblock %}
     </main>
 
-    <!-- MENSAJES -->
+    <!-- mssgs -->
     {% if messages %}
     <div class="messages-container">
         {% for message in messages %}
@@ -110,7 +112,7 @@
     </div>
     {% endif %}
 
-    <!-- FOOTER -->
+    <!-- footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
