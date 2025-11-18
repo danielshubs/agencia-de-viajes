@@ -1,241 +1,111 @@
+{% extends 'base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TravelDream - Tu agencia de viajes de confianza">
-    <meta name="keywords" content="viajes, destinos, vacaciones, reservas, turismo">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}?v=1.5">
+{% endblock %}
 
-    {% block extra_css %}{% endblock %}
-    <title>{% block titulo %}TravelDream - Inicio{% endblock %}</title>
-    
-    <style>
-        
-    </style>
-</head>
+{% block titulo %}TravelDream - Inicio{% endblock %}
 
-<body>
-    <!-- Cabecera -->
-    <header>
-        <div class="menu-container">
-            <div class="logo-section">
-                <div class="logo">
-                    <img src="{% static 'images/logo.png' %}" alt="TravelDream Logo" class="logo-image">
-                </div>
-                <div class="company-name">TravelDream</div>
-            </div>
-            <nav class="nav-menu">
-                <a href="{% url 'index' %}">Inicio</a>
-                <a href="{% url 'destinos' %}">Destinos</a>
-                <a href="{% url 'reservar' %}">Reservar</a>
-            </nav>
-            <div class="login-link">
-                <a href="{% url 'login' %}">Iniciar Sesión</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Contenido principal -->
-    <main id="content">
-        {% block contenido %}
-        <!-- Sección Frase Inspiradora -->
-        <section class="hero-section">
-            <div class="hero-image"></div>
-            <div class="hero-content">
-                <h1 class="hero-title">Viajar te abre la puerta al mundo</h1>
-                <p class="hero-subtitle">Descubre lugares increíbles y crea recuerdos que durarán para siempre</p>
-                <a href="{% url 'destinos' %}" class="hero-button">Explorar Destinos</a>
-            </div>
-        </section>
-        
-        <!-- Separador -->
-        <div class="separator">
-            <div class="separator-text">Quiénes Somos</div>
-        </div>
-        
-        <!-- Sección Quiénes Somos -->
-        <section class="about-section">
-            <div class="about-container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>En <strong>TravelDream</strong>, creemos que viajar es mucho más que moverse de un lugar a otro. Es descubrir nuevas culturas, sabores, paisajes y maneras de entender el mundo.</p>
-                        <p>Desde 2010, ayudamos a miles de viajeros a planificar aventuras a medida, con itinerarios cuidadosamente diseñados, alojamiento de calidad y el mejor asesoramiento. Nuestra misión es ofrecer viajes auténticos, sostenibles y transformadores.</p>
-                        <p>Nuestro equipo de expertos en viajes trabaja incansablemente para diseñar itinerarios personalizados que se adapten a tus sueños, preferencias y presupuesto.</p>
-                    </div>
-                    <div class="about-image">
-                        <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Equipo de TravelDream">
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Sección Destinos Populares -->
-        <section class="destinations-section">
-            <div class="destinations-container">
-                <h2 class="section-title">Destinos Populares</h2>
-                
-                {% if destinos %}
-                    <div class="destinations-grid">
-                        <!-- París con imagen local -->
-                        <div class="destination-card">
-                            <div class="destination-image">
-                                <img src="{% static 'images/paris.jpg' %}?v=2" alt="París">
-                            </div>
-                            <div class="destination-info">
-                                <h3 class="destination-name">París, Francia</h3>
-                                <p class="destination-description">La ciudad del amor te espera con su encanto único, monumentos icónicos y exquisita gastronomía.</p>
-                                <div class="destination-price">Desde €650</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tokio con imagen local -->
-                        <div class="destination-card">
-                            <div class="destination-image">
-                                <img src="{% static 'images/tokio.jpg' %}?v=2" alt="Tokio">
-                            </div>
-                            <div class="destination-info">
-                                <h3 class="destination-name">Tokio, Japón</h3>
-                                <p class="destination-description">Descubre la perfecta armonía entre tradición y modernidad en la vibrante capital japonesa.</p>
-                                <div class="destination-price">Desde €1,200</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Bali con imagen local -->
-                        <div class="destination-card">
-                            <div class="destination-image">
-                                <img src="{% static 'images/bali.jpg' %}?v=2" alt="Bali">
-                            </div>
-                            <div class="destination-info">
-                                <h3 class="destination-name">Bali, Indonesia</h3>
-                                <p class="destination-description">Playas de ensueño, templos ancestrales y una cultura fascinante te esperan en esta isla paradisíaca.</p>
-                                <div class="destination-price">Desde €850</div>
-                            </div>
-                        </div>
-                    </div>
-                {% else %}
-                    <div class="destinations-grid">
-                        <div class="destination-card">
-                            <div class="destination-image">
-                                <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="París">
-                            </div>
-                            <div class="destination-info">
-                                <h3 class="destination-name">París, Francia</h3>
-                                <p class="destination-description">La ciudad del amor te espera con su encanto único, monumentos icónicos y exquisita gastronomía.</p>
-                                <div class="destination-price">Desde €650</div>
-                            </div>
-                        </div>
-                        <div class="destination-card">
-                            <div class="destination-image">
-                                <img src="https://images.unsplash.com/photo-1540959733332-0b10d1fe1b2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Tokio">
-                            </div>
-                            <div class="destination-info">
-                                <h3 class="destination-name">Tokio, Japón</h3>
-                                <p class="destination-description">Descubre la perfecta armonía entre tradición y modernidad en la vibrante capital japonesa.</p>
-                                <div class="destination-price">Desde €1,200</div>
-                            </div>
-                        </div>
-                        <div class="destination-card">
-                            <div class="destination-image">
-                                <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Bali">
-                            </div>
-                            <div class="destination-info">
-                                <h3 class="destination-name">Bali, Indonesia</h3>
-                                <p class="destination-description">Playas de ensueño, templos ancestrales y una cultura fascinante te esperan en esta isla paradisíaca.</p>
-                                <div class="destination-price">Desde €850</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="text-align: center;">
-                        <a href="{% url 'destinos' %}" class="explore-button">Explora más destinos</a>
-                    </div>
-                {% endif %}
-            </div>
-        </section>
-        
-        <!-- Sección Reseñas -->
-        <section class="testimonials-section">
-            <div class="testimonials-container">
-                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Mi viaje a Japón con TravelDream superó todas mis expectativas. Cada detalle estaba cuidadosamente planeado y pude disfrutar sin preocupaciones."</p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>María Cortés</h4>
-                                <p>Viajó a Tokio</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Excelente servicio al cliente. Me ayudaron a planificar el viaje de mis sueños a Bali y todo salió perfecto. ¡Definitivamente volveré a confiar en ellos!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Javier Gómez</h4>
-                                <p>Viajó a Bali</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Gracias a TravelDream pude disfrutar de una luna de miel inolvidable en París. Su atención personalizada hizo toda la diferencia."</p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Laura Rodríguez</h4>
-                                <p>Viajó a París</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Sección reservar -->
-        <section class="cta-section">
-            <div class="cta-container">
-                <h2 class="cta-title">¿Listo para tu próxima aventura?</h2>
-                <p class="cta-text">No esperes más para hacer realidad tus sueños de viaje. Nuestros expertos están listos para ayudarte a planificar la experiencia perfecta.</p>
-                <a href="{% url 'reservar' %}" class="cta-button">Reservar Ahora</a>
-            </div>
-        </section>
-        {% endblock %}
-    </main>
-
-    <!-- mensajes -->
-    {% if messages %}
-    <div class="messages-container">
-        {% for message in messages %}
-        <div class="message {{ message.tags }}">
-            {{ message }}
-        </div>
-        {% endfor %}
+{% block contenido %}
+<!-- Sección Frase Inspiradora -->
+<section class="hero-section">
+    <div class="hero-image"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Viajar te abre la puerta al mundo</h1>
+        <p class="hero-subtitle">Descubre lugares increíbles y crea recuerdos que durarán para siempre</p>
+        <a href="{% url 'destinos' %}" class="hero-button">Explorar Destinos</a>
     </div>
-    {% endif %}
+</section>
 
-    <!-- footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <p>Teléfono: +34 912 345 678</p>
-                <p>Email: info@traveldream.com</p>
+<!-- Separador -->
+<div class="separator">
+    <div class="separator-text">Quiénes Somos</div>
+</div>
+
+<!-- Sección Quiénes Somos -->
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-content">
+            <div class="about-text">
+                <p>En <strong>TravelDream</strong>, creemos que viajar es mucho más que moverse de un lugar a otro. Es descubrir nuevas culturas, sabores, paisajes y maneras de entender el mundo.</p>
+                <p>Desde 2010, ayudamos a miles de viajeros a planificar aventuras a medida, con itinerarios cuidadosamente diseñados, alojamiento de calidad y el mejor asesoramiento. Nuestra misión es ofrecer viajes auténticos, sostenibles y transformadores.</p>
+                <p>Nuestro equipo de expertos en viajes trabaja incansablemente para diseñar itinerarios personalizados que se adapten a tus sueños, preferencias y presupuesto.</p>
             </div>
-            <div class="footer-section">
-                <h3>Horario de Atención al Cliente</h3>
-                <p>Lunes a Viernes: 9:00 - 20:00</p>
-                <p>Sábados: 10:00 - 14:00</p>
-                <p>Domingos y festivos: Cerrado</p>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 TravelDream. Todos los derechos reservados.</p>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Equipo de TravelDream">
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    {% block extra_js %}{% endblock %}
-</body>
-</html>
+<!-- Sección Destinos Populares -->
+<section class="destinations-section">
+    <div class="destinations-container">
+        <h2 class="section-title">Destinos Populares</h2>
+        <div class="destinations-grid">
+            {% for d in destinos %}
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <a href="{% url 'reservar' %}"><img src="{% static 'images/' %}{{ d.nombre|lower }}.jpg?v=2" alt="{{ d.nombre }}"></a>
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-name">{{d.nombre}}, {{d.pais}}</h3>
+                        <p class="destination-description">{{d.descripcion}}</p>
+                        <div class="destination-price">Desde €650</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div style="text-align: center;">
+            <a href="{% url 'destinos' %}" class="explore-button">Explora más destinos</a>
+        </div>
+    </div>
+</section>
+
+<!-- Sección Reseñas -->
+<section class="testimonials-section">
+    <div class="testimonials-container">
+        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Mi viaje a Japón con TravelDream superó todas mis expectativas. Cada detalle estaba cuidadosamente planeado y pude disfrutar sin preocupaciones."</p>
+                <div class="testimonial-author">
+                    <div class="author-info">
+                        <h4>María Cortés</h4>
+                        <p>Viajó a Tokio</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Excelente servicio al cliente. Me ayudaron a planificar el viaje de mis sueños a Bali y todo salió perfecto. ¡Definitivamente volveré a confiar en ellos!"</p>
+                <div class="testimonial-author">
+                    <div class="author-info">
+                        <h4>Javier Gómez</h4>
+                        <p>Viajó a Bali</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Gracias a TravelDream pude disfrutar de una luna de miel inolvidable en París. Su atención personalizada hizo toda la diferencia."</p>
+                <div class="testimonial-author">
+                    <div class="author-info">
+                        <h4>Laura Rodríguez</h4>
+                        <p>Viajó a París</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección reservar -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h2 class="cta-title">¿Listo para tu próxima aventura?</h2>
+        <p class="cta-text">No esperes más para hacer realidad tus sueños de viaje. Nuestros expertos están listos para ayudarte a planificar la experiencia perfecta.</p>
+        <a href="{% url 'reservar' %}" class="cta-button">Reservar Ahora</a>
+    </div>
+</section>
+{% endblock %}

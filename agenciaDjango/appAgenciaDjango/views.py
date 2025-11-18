@@ -34,6 +34,7 @@ def reservar(request, nombre_destino: str = None):
 
 def login(request):
     return render(request, 'login.html')
+
 def login_enter(request):
     if request.method == 'POST':
         mail = request.POST.get('mail')

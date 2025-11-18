@@ -1,112 +1,50 @@
+{% extends 'base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TravelDream - Tu agencia de viajes de confianza">
-    <meta name="keywords" content="viajes, destinos, vacaciones, reservas, turismo">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
-    {% block extra_css %}{% endblock %}
-    <title>{% block titulo %}TravelDream - Iniciar Sesión{% endblock %}</title>
-    
-   
-</head>
+{% block titulo %}TravelDream - Iniciar Sesión{% endblock %}
 
-<body>
-    <!-- cabecera -->
-    <header>
-        <div class="menu-container">
-            <div class="logo-section">
-                <div class="logo">
-                    <img src="{% static 'images/logo.png' %}" alt="TravelDream Logo" class="logo-image">
-                </div>
-                <div class="company-name">TravelDream</div>
-            </div>
-            <nav class="nav-menu">
-                <a href="{% url 'index' %}">Inicio</a>
-                <a href="{% url 'destinos' %}">Destinos</a>
-                <a href="{% url 'reservar' %}">Reservar</a>
-            </nav>
-            <div class="login-link">
-                <a href="{% url 'login' %}">Iniciar Sesión</a>
-            </div>
+{% block contenido %}
+
+<div class="background-image"></div>
+
+<div class="login-container">
+    <h2 class="login-title">Iniciar Sesión</h2>
+
+    <form method="{% url 'login_enter' %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
         </div>
-    </header>
 
-    <!-- main -->
-    <main id="content">
-        {% block background_image %}
-        <div class="background-image"></div>
-        {% endblock %}
-
-        {% block contenido %}
-            <div class="login-container">
-                <h2 class="login-title">Iniciar Sesión</h2>
-                
-                <form method="POST">
-                    {% csrf_token %}
-                    
-                    <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" placeholder="Tu contraseña" required>
-                    </div>
-                    
-                    <button type="submit" class="login-button">Iniciar Sesión</button>
-                </form>  
-                
-                <div class="login-links">
-                    <a href="#">Crear cuenta</a>
-                    <a href="#">¿Has olvidado tu contraseña?</a>
-                </div>
-            </div>  
-        {% endblock %}
-    </main>
-
-    <!-- mensajes -->
-    {% if messages %}
-    <div class="messages-container">
-        {% for message in messages %}
-        <div class="message {{ message.tags }}">
-            {{ message }}
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Tu contraseña" required>
         </div>
-        {% endfor %}
+
+        <button type="submit" class="login-button">Iniciar Sesión</button>
+    </form>
+
+    <div class="login-links">
+        <a href="#">Crear cuenta</a>
+        <a href="#">¿Has olvidado tu contraseña?</a>
     </div>
-    {% endif %}
+</div>
 
-    <!-- footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <p>Teléfono: +34 912 345 678</p>
-                <p>Email: info@traveldream.com</p>
-            </div>
-            <div class="footer-section">
-                <h3>Horario de Atención al Cliente</h3>
-                <p>Lunes a Viernes: 9:00 - 20:00</p>
-                <p>Sábados: 10:00 - 14:00</p>
-                <p>Domingos y festivos: Cerrado</p>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 TravelDream. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JS -->
-    <script src="{% static 'js/main.js' %}"></script>
-    {% block extra_js %}{% endblock %}
-
-</body>
-</html>
+<!-- mssgs -->
+{% if messages %}
+<div class="messages-container">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
