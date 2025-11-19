@@ -18,9 +18,7 @@
     {% for d in destinos %}
         <div class="destino-card">
             <div class="destino-image">
-                <a href="{% url 'reservar' %}">
-                    <img src="{% static 'images/' %}{{ d.nombre|lower }}.jpg?v=2" alt="{{d.nombre}}">
-                </a>
+                <img src="{% static 'images/' %}{{ d.nombre|lower }}.jpg?v=2" alt="{{d.nombre}}">
             </div>
 
             <div class="destino-info">
@@ -31,7 +29,7 @@
                     <div class="destino-price">€1,200 - €2,500</div>
                     <div class="destino-duration">7-10 días</div>
                 </div>
-                <a href="{% url 'reservar' %}" class="destino-button">Reservar Ahora</a>
+                <a href="{% url 'viajes' d.nombre %}" class="destino-button">Reservar Ahora</a>
             </div>
         </div>
     {% endfor %}

@@ -48,7 +48,7 @@
             {% for d in destinos %}
                 <div class="destination-card">
                     <div class="destination-image">
-                        <a href="{% url 'reservar' %}"><img src="{% static 'images/' %}{{ d.nombre|lower }}.jpg?v=2" alt="{{ d.nombre }}"></a>
+                        <img src="{% static 'images/' %}{{ d.nombre|lower }}.jpg?v=2" alt="{{ d.nombre }}"></a>
                     </div>
                     <div class="destination-info">
                         <h3 class="destination-name">{{d.nombre}}, {{d.pais}}</h3>
@@ -105,7 +105,7 @@
     <div class="cta-container">
         <h2 class="cta-title">¿Listo para tu próxima aventura?</h2>
         <p class="cta-text">No esperes más para hacer realidad tus sueños de viaje. Nuestros expertos están listos para ayudarte a planificar la experiencia perfecta.</p>
-        <a href="{% url 'reservar' %}" class="cta-button">Reservar Ahora</a>
+        <a class="cta-button">Reservar Ahora</a>
     </div>
 </section>
 {% endblock %}
