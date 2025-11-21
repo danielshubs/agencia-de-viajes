@@ -1,134 +1,102 @@
+{% extends 'base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TravelDream - Reserva tu viaje soñado">
-    <meta name="keywords" content="viajes, reservas, destinos, vacaciones, turismo">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/reservar.css' %}">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/reservar.css' %}?v=1.3">
+{% endblock %}
 
-    {% block extra_css %}{% endblock %}
-    <title>{% block titulo %}TravelDream - Reservas{% endblock %}</title>
-</head>
+{% block titulo %}TravelDream - Reservas{% endblock %}
 
-<body>
-    <!-- cabecera -->
-    <header>
-        <div class="menu-container">
-            <div class="logo-section">
-                <div class="logo">
-                    <img src="{% static 'images/logo.png' %}" alt="TravelDream Logo" class="logo-image">
-                </div>
-                <div class="company-name">TravelDream</div>
-            </div>
-            <nav class="nav-menu">
-                <a href="{% url 'index' %}">Inicio</a>
-                <a href="{% url 'destinos' %}">Destinos</a>
-                <a href="{% url 'reservar' %}">Reservar</a>
-            </nav>
-            <div class="login-link">
-                <a href="{% url 'login' %}">Iniciar Sesión</a>
-            </div>
+{% block contenido %}
+<div class="container">
+    <div class="card">
+        <h2 class="title">Reservar Viaje</h2>
+
+        <!-- Información del Viaje -->
+        <div class="info">
+            <strong>{{ viaje.destino.nombre }}</strong><br>
+            {{ viaje.fecha_salida|date:"d/m/Y" }} - {{ viaje.fecha_regreso|date:"d/m/Y" }}<br>
+            Precio base: €{{ viaje.precio }}<br>
+            Plazas disponibles: {{ viaje.plazas_disponibles }}
         </div>
-    </header>
 
-    <!-- maini -->
-    <main id="content">
-        {% block background_image %}
-        <div class="background-image"></div>
-        {% endblock %}
-
-        {% block contenido %}
-        <div class="reservation-container">
-            <h2 class="reservation-title">Realizar Reserva</h2>
+        <form method="POST" action="{% url 'confirmar_reserva' viaje.viajeID %}">
+            {% csrf_token %}
             
-            {% if destino %}
-                <p class="reservation-subtitle">Reserva tu viaje a {{ destino }}</p>
-            {% else %}
-                <p class="reservation-subtitle">Selecciona un destino para reservar tu viaje</p>
-            {% endif %}
-            
-            <form method="POST">
-                {% csrf_token %}
+            <!-- Sección de Datos Personales -->
+            <div class="form-section">
+                <h3>Datos Personales</h3>
                 
-                <div class="form-group">
-                    <label for="destination">Destino</label>
-                    <select id="destination" name="destination" required>
-                        <option value="" disabled selected>Selecciona un destino</option>
-                        {% if destinos %}
-                            {% for d in destinos %}
-                                <option value="{{ d.nombre }}" {% if destino == d.nombre %}selected{% endif %}>
-                                    {{ d.nombre }}, {{ d.pais }}
-                                </option>
-                            {% endfor %}
-                        {% endif %}
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="name">Nombre completo</label>
-                    <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-                </div>
-                
-                <div class="form-group">
-                    <div class="date-group">
-                        <div class="date-input">
-                            <label for="start-date">Fecha de ida</label>
-                            <input type="date" id="start-date" name="start_date" required>
-                        </div>
-                        <div class="date-input">
-                            <label for="end-date">Fecha de vuelta</label>
-                            <input type="date" id="end-date" name="end_date" required>
-                        </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nombre *</label>
+                        <input type="text" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido *</label>
+                        <input type="text" name="apellido" required>
                     </div>
                 </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono *</label>
+                        <input type="tel" name="telefono" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Pago -->
+            <div class="form-section">
+                <h3>Información de Pago</h3>
                 
-                <button type="submit" class="reservation-button">Confirmar Reserva</button>
-            </form>
-        </div>
-        {% endblock %}
-    </main>
+                <div class="form-group">
+                    <label>Número de Tarjeta *</label>
+                    <input type="text" name="cc_numero" placeholder="1234 5678 9012 3456" required maxlength="19">
+                </div>
 
-    <!-- mensjaes -->
-    {% if messages %}
-    <div class="messages-container">
-        {% for message in messages %}
-        <div class="message {{ message.tags }}">
-            {{ message }}
-        </div>
-        {% endfor %}
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Fecha Expiración *</label>
+                        <input type="text" name="cc_expiracion" placeholder="MM/AA" required maxlength="5">
+                    </div>
+                    <div class="form-group">
+                        <label>CVV *</label>
+                        <input type="text" name="cc_cvv" placeholder="123" required maxlength="3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opciones Adicionales -->
+            <div class="form-section">
+                <h3>Opciones Adicionales</h3>
+                
+                <div class="form-group">
+                    <div class="checkbox">
+                        <input type="checkbox" name="seguro_viaje" id="seguro">
+                        <label for="seguro">Seguro de viaje (+€50)</label>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="total-section">
+                <div class="total">
+                    Total: €<span id="total">{{ viaje.precio }}</span>
+                </div>
+            
+                {% if viaje.plazas_disponibles > 0 %}
+                    <button type="submit" class="btn">Confirmar y Pagar</button>
+                {% else %}
+                    <div class="error">No hay plazas disponibles</div>
+                {% endif %}
+            </div>
+        </form>
     </div>
-    {% endif %}
-
-    <!-- footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <p>Teléfono: +34 912 345 678</p>
-                <p>Email: info@traveldream.com</p>
-            </div>
-            <div class="footer-section">
-                <h3>Horario de Atención al Cliente</h3>
-                <p>Lunes a Viernes: 9:00 - 20:00</p>
-                <p>Sábados: 10:00 - 14:00</p>
-                <p>Domingos y festivos: Cerrado</p>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 TravelDream. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-    {% block extra_js %}{% endblock %}
-</body>
-</html>
+</div>
+{% endblock %}

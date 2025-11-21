@@ -10,9 +10,6 @@ def index(request):
     lista_destinos = Destino.objects.all()[:3]
     return render(request, 'index.html', {'destinos': lista_destinos})
 
-def detalle_viaje(request, viaje_id):
-    viaje = get_object_or_404(Viaje, pk=viaje_id)
-    return render(request, 'viaje_details.html', {'viaje': viaje})
 
 
 def detalle_destino(request, destinoID):
@@ -34,6 +31,7 @@ def reservar(request, nombre_destino: str = None):
 
 def login(request):
     return render(request, 'login.html')
+
 def login_enter(request):
     if request.method == 'POST':
         mail = request.POST.get('mail')
@@ -43,5 +41,48 @@ def login_enter(request):
             return redirect('index')
         messages.error(request, "Usuario o contraseña incorrectos.")
         return login(request)
+
+def viajes(request , destino_nombre: str):
+    destino = Destino.objects.get(nombre=destino_nombre)
+    lista_viajes = Viaje.objects.filter(destino=destino.destinoID)
+    return render(request, 'viajes.html', {'viajes': lista_viajes})
+
+
+def formulario_reserva(request, viaje_id):
+    viaje = Viaje.objects.get(viajeID=viaje_id)
+    return render(request, 'reservar.html', {
+        'viaje': viaje
+    })
+
+def confirmar_reserva(request, viaje_id):
+    if request.method == 'POST':
+        viaje = Viaje.objects.get(viajeID=viaje_id)
+
+        # Crear o obtener cliente
+        cliente, created = Cliente.objects.get_or_create(
+            email=request.POST.get('email'),
+            defaults={
+                'nombre': request.POST.get('nombre'),
+                'apellido': request.POST.get('apellido'),
+                'telefono': request.POST.get('telefono')
+            }
+        )
+
+        # Crear la reserva
+        reserva = Reserva.objects.create(
+            clienteID=cliente,
+            viajeID=viaje,
+            seguro_viaje='seguro_viaje' in request.POST,
+        )
+
+        # Aquí procesarías el pago con los datos de tarjeta
+        cc_numero = request.POST.get('cc_numero')
+        cc_expiracion = request.POST.get('cc_expiracion')
+        cc_cvv = request.POST.get('cc_cvv')
+
+        messages.success(request,"Pago realizado correctamente")
+        return render(request, 'reserva_exitosa.html', {'reserva': reserva})
+
+    return redirect('formulario_reserva', viaje_id=viaje_id)
 
 
