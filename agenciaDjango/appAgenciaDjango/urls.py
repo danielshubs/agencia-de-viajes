@@ -10,5 +10,6 @@ urlpatterns = [
     path('reservar/<str:viaje_id>', views.formulario_reserva, name='ver_reserva'),
     path('viajes/', views.viajes_general, name='viajes_general'),
     path('viajes/<str:destino_nombre>', views.viajes, name='viajes'),
+    path('viajes/<str:destino_nombre>/<int:precio_maximo>', views.viajes_max, name='viajes_max'),
     path('confirmar_reserva/<str:viaje_id>',views.confirmar_reserva,name = 'confirmar_reserva'),
 ]
