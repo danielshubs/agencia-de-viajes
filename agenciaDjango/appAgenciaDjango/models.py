@@ -1,15 +1,19 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class Cliente(models.Model):
+class Cliente(AbstractUser):
     clienteID = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100)
     telefono = models.CharField(max_length=15)
+    email = models.EmailField(unique=True)
+
+    # Usasamos el email como username para la autenticacion
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['nombre', 'apellido','username']
 
     def __str__(self):
-        return self.nombre
+            return self.nombre
 
 class Destino(models.Model):
     destinoID = models.AutoField(primary_key=True)

@@ -3,7 +3,7 @@ from . import models
 from .models import Viaje , Cliente , Destino , Reserva
 from django.contrib import messages
 from .models import Viaje, Destino
-
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def index(request):
@@ -29,18 +29,27 @@ def reservar(request, nombre_destino: str = None):
     else:
         return render(request, 'reservar.html', {'destinos': lista_destinos})
 
-def login(request):
+def login_rend(request):
     return render(request, 'login.html')
 
 def login_enter(request):
     if request.method == 'POST':
-        mail = request.POST.get('mail')
+        mail = request.POST.get('email')
         password = request.POST.get('password')
-        user = Cliente.objects.filter(email=mail, password=password).first()
+
+
+        # Usamos authetificate para comprobar desde django que el usuario existe , para ello hay que indicar qye
+        # nuestra clase sera AUTH_USER_MODEL = 'miapp.Cliente' la que utilizara django para la autenticacion al hacer
+        # esto podremos utilizar instancia user desde cualqueir parte de django junto con sus atributos y metodos
+        user = authenticate(request, username=mail, password=password)
+
         if user:
+            print("user autenticado")
+            login(request, user)
             return redirect('index')
+        print("user no autenticado")
         messages.error(request, "Usuario o contraseña incorrectos.")
-        return login(request)
+        return login_rend(request)
 
 def viajes(request , destino_nombre: str):
     destino = Destino.objects.get(nombre=destino_nombre)
@@ -59,6 +68,10 @@ def confirmar_reserva(request, viaje_id):
         viaje = Viaje.objects.get(viajeID=viaje_id)
 
         # Crear o obtener cliente
+
+        # Django intenta buscar un objeto Cliente donde el campo email coincida con el valor
+        # proporcionado (request.POST.get('email')).Si no encuentra un objeto con ese email,
+        # crea uno nuevo utilizando el valor de email y los valores proporcionados en el diccionario defaults.
         cliente, created = Cliente.objects.get_or_create(
             email=request.POST.get('email'),
             defaults={
@@ -80,9 +93,18 @@ def confirmar_reserva(request, viaje_id):
         cc_expiracion = request.POST.get('cc_expiracion')
         cc_cvv = request.POST.get('cc_cvv')
 
-        messages.success(request,"Pago realizado correctamente")
-        return render(request, 'reserva_exitosa.html', {'reserva': reserva})
+        return render(request, 'reserva_exitosa.html', {'reserva': reserva , 'id': hash(reserva)})
 
     return redirect('formulario_reserva', viaje_id=viaje_id)
+
+def mis_reservas(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    cliente = request.user
+    cliente = Cliente.objects.get(email=cliente.email)
+    reservas = Reserva.objects.filter(clienteID=cliente.clienteID)
+
+    return render(request, 'mis_reservas.html', {'reservas': reservas})
 
 

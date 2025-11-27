@@ -15,7 +15,7 @@
             <div class="success-icon">✅</div>
             <h2>¡Reserva Confirmada!</h2>
             <p>Tu reserva ha sido creada exitosamente.</p>
-            <p><strong>Número de reserva:</strong> #{{ reserva.reservaID }}</p>
+            <p><strong>Còdigo de reserva:</strong> #{{id}}</p>
             <p><strong>Destino:</strong> {{ reserva.viajeID.destino.nombre }}</p>
             <p><strong>Fecha:</strong> {{ reserva.viajeID.fecha_salida|date:"d/m/Y" }}</p>
             <a href="{% url 'index' %}" class="btn">Volver a Inicio</a>
