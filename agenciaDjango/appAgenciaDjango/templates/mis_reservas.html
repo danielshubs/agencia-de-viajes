@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block titulo %}Mis Viajes{% endblock %}
+
+
+{% block contenido %}
+    <p> Hola { {user.email}}</p>
+    <p> Password : {{user.password }}}</p>
+    {% for reserva in reservas %}
+        <div>
+            <h3>Reserva #{{ reserva.reservaID }}</h3>
+            <p>Destino: {{ reserva.viajeID.destino.nombre }}</p>
+            <p>Fecha de Salida: {{ reserva.viajeID.fecha_salida|date:"d/m/Y" }}</p>
+            <p>Fecha de Regreso: {{ reserva.viajeID.fecha_regreso|date:"d/m/Y" }}</p>
+            <p>Precio Total: €{{ reserva.precio_total }}</p>
+        </div>
+        <hr>
+    {% empty %}
+        <p>No tienes reservas aún.</p>
+    {% endfor %}
+
+{% endblock %}
