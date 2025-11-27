@@ -3,6 +3,7 @@ from . import models
 from .models import Viaje , Cliente , Destino , Reserva
 from django.contrib import messages
 from .models import Viaje, Destino
+from django.db.models import Min, Max
 from django.contrib.auth import authenticate, login
 
 # Create your views here.
@@ -18,8 +19,12 @@ def detalle_destino(request, destinoID):
     return render(request, 'destino.html', {'destino': destino, 'viajes': viajes_asociados})
 
 def destinos(request):
-    lista_destinos = models.Destino.objects.all()
-    return render(request, 'destinos.html', {'destinos': lista_destinos})
+    lista_destinos = models.Destino.objects.annotate(
+        precio_min=Min('viaje__precio'),
+        precio_max=Max('viaje__precio')
+    )
+    lista_viajes = models.Viaje.objects.all()
+    return render(request, 'destinos.html', {'destinos': lista_destinos, 'viajes': lista_viajes})
 
 def reservar(request, nombre_destino: str = None):
     lista_destinos = models.Destino.objects.all()
@@ -51,11 +56,19 @@ def login_enter(request):
         messages.error(request, "Usuario o contraseña incorrectos.")
         return login_rend(request)
 
+def viajes_general(request):
+    lista_viajes = Viaje.objects.all()
+    return render(request, 'viajes.html', {'viajes': lista_viajes})
+
 def viajes(request , destino_nombre: str):
     destino = Destino.objects.get(nombre=destino_nombre)
     lista_viajes = Viaje.objects.filter(destino=destino.destinoID)
     return render(request, 'viajes.html', {'viajes': lista_viajes})
 
+def viajes_max(request, destino_nombre, precio_maximo):
+    destino = Destino.objects.get(nombre=destino_nombre)
+    lista_viajes = Viaje.objects.filter(destino=destino.destinoID, precio__lte=precio_maximo)
+    return render(request, 'viajes.html', {'viajes': lista_viajes})
 
 def formulario_reserva(request, viaje_id):
     viaje = Viaje.objects.get(viajeID=viaje_id)
