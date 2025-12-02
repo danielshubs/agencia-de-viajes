@@ -6,7 +6,21 @@
 <link rel="stylesheet" href="{% static 'css/viajes.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/precio_max.js' %}"></script>
+{% endblock %}
+
 {% block contenido %}
+
+
+<div class="viajes-range">
+    <form action="" id="range-form" name="range-form">
+        Precio máximo: <input type="number" id="precio_maximo" name="precio_maximo" required min=0 max=9999>
+        <input type=submit value="Buscar viajes">
+    </form>
+</div>
+
+
     {% if viajes %}
         <div class="viajes-grid">
             {% for viaje in viajes %}
