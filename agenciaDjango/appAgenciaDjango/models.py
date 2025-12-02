@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+
 class Cliente(AbstractUser):
     clienteID = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
@@ -10,10 +11,11 @@ class Cliente(AbstractUser):
 
     # Usasamos el email como username para la autenticacion
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nombre', 'apellido','username']
+    REQUIRED_FIELDS = ['nombre', 'apellido', 'username']
 
     def __str__(self):
-            return self.nombre
+        return self.nombre
+
 
 class Destino(models.Model):
     destinoID = models.AutoField(primary_key=True)
@@ -24,6 +26,7 @@ class Destino(models.Model):
 
     def __str__(self):
         return self.nombre
+
 
 class Viaje(models.Model):
     viajeID = models.AutoField(primary_key=True)
@@ -37,6 +40,9 @@ class Viaje(models.Model):
     def __str__(self):
         return f"{self.viajeID} - {self.destino.nombre}"
 
+    # Todo : Crear funcion para calcular el numero de plazas totales del viaje en base al numero de reservas
+
+
 class Reserva(models.Model):
     clienteID = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     viajeID = models.ForeignKey(Viaje, on_delete=models.CASCADE)
@@ -45,6 +51,3 @@ class Reserva(models.Model):
 
     def __str__(self):
         return f"Reserva {self.viajeID} - {self.clienteID.nombre}"
-
-
-

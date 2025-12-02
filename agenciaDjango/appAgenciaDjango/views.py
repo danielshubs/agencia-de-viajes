@@ -5,6 +5,7 @@ from django.contrib import messages
 from .models import Viaje, Destino
 from django.db.models import Min, Max
 from django.contrib.auth import authenticate, login
+import datetime
 
 # Create your views here.
 def index(request):
@@ -117,7 +118,8 @@ def mis_reservas(request):
     cliente = request.user
     cliente = Cliente.objects.get(email=cliente.email)
     reservas = Reserva.objects.filter(clienteID=cliente.clienteID)
+    print(reservas)
+    reservas_updated =[reserva for reserva in reservas if reserva.viajeID.fecha_regreso >=  datetime.date.today()]
+    ids = [hash(reserva) for reserva in reservas]
 
-    return render(request, 'mis_reservas.html', {'reservas': reservas})
-
-
+    return render(request, 'mis_reservas.html', {'reservas': zip(reservas_updated, ids) })
