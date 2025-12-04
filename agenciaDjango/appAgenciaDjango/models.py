@@ -34,13 +34,18 @@ class Viaje(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_salida = models.DateField()
     fecha_regreso = models.DateField()
-    plazas_disponibles = models.IntegerField()
     plazas_totales = models.IntegerField()
 
     def __str__(self):
         return f"{self.viajeID} - {self.destino.nombre}"
 
     # Todo : Crear funcion para calcular el numero de plazas totales del viaje en base al numero de reservas
+    def calcular_plazas_disponibles(self):
+        reservas_count = Reserva.objects.filter(viajeID=self.viajeID).count()
+        return self.plazas_totales - reservas_count
+
+        
+
 
 
 class Reserva(models.Model):

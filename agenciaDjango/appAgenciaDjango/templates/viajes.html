@@ -36,11 +36,11 @@
                         </div>
                         <div class="viaje-precio">€{{ viaje.precio }}</div>
                         <div class="viaje-plazas">
-                            {{ viaje.plazas_disponibles }} / {{ viaje.plazas_totales }} plazas
+                            {{ viaje.calcular_plazas_disponibles }} / {{ viaje.plazas_totales }} plazas
                         </div>
                         <a href="{% url 'ver_reserva' viaje.viajeID%}" 
-                        class="viaje-button {% if viaje.plazas_disponibles == 0 %}agotado{% endif %}">
-                            {% if viaje.plazas_disponibles > 0 %}
+                        class="viaje-button {% if viaje.calcular_plazas_disponibles == 0 %}agotado{% endif %}">
+                            {% if viaje.calcular_plazas_disponibles > 0 %}
                                 Reservar
                             {% else %}
                                 Agotado
