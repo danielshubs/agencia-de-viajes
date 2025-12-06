@@ -32,10 +32,13 @@
             <nav class="nav-menu">
                 <a href="{% url 'index' %}">Inicio</a>
                 <a href="{% url 'destinos' %}">Destinos</a>
+                <a href="{% url 'mis_reservas' %}">Mis Reservas</a>
             </nav>
-            <div class="login-link">
-                <a href="{% url 'login' %}">Iniciar Sesión</a>
-            </div>
+            {%if not user.is_authenticated %}
+                <div class="login-link">
+                    <a href="{% url 'login' %}">Iniciar Sesión</a>
+                </div>
+            {% endif %}
         </div>
     </header>
 

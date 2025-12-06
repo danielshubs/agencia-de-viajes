@@ -124,3 +124,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'appAgenciaDjango/static')]
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'appAgenciaDjango.Cliente'
+
+# # tell the django authentication system to use your custom backend.
+# AUTHENTICATION_BACKENDS = ('appAgenciaDjango.backends.EmailAuthBackend',)

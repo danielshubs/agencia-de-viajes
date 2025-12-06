@@ -6,34 +6,52 @@
 <link rel="stylesheet" href="{% static 'css/viajes.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/precio_max.js' %}"></script>
+{% endblock %}
+
 {% block contenido %}
-     <div class="viajes-grid">
-        {% for viaje in viajes %}
-            <div class="viaje-card">
-                <div class="viaje-image">
-                    <img src="{% static 'images/' %}{{ viaje.destino.nombre|lower }}.jpg" alt="{{ viaje.destino.nombre }}">
-                </div>
-                
-                <div class="viaje-info">
-                    <div class="viaje-destino">{{ viaje.destino.nombre }}</div>
-                    <div class="viaje-fechas">
-                        {{ viaje.fecha_salida|date:"d/m/Y" }} - {{ viaje.fecha_regreso|date:"d/m/Y" }}
+
+
+<div class="viajes-range">
+    <form action="" id="range-form" name="range-form">
+        Precio máximo: <input type="number" id="precio_maximo" name="precio_maximo" required min=0 max=9999>
+        <input type=submit value="Buscar viajes">
+    </form>
+</div>
+
+
+    {% if viajes %}
+        <div class="viajes-grid">
+            {% for viaje in viajes %}
+                <div class="viaje-card">
+                    <div class="viaje-image">
+                        <img src="{% static 'images/' %}{{ viaje.destino.nombre|lower }}.jpg" alt="{{ viaje.destino.nombre }}">
                     </div>
-                    <div class="viaje-precio">€{{ viaje.precio }}</div>
-                    <div class="viaje-plazas">
-                        {{ viaje.plazas_disponibles }} / {{ viaje.plazas_totales }} plazas
+                    
+                    <div class="viaje-info">
+                        <div class="viaje-destino">{{ viaje.destino.nombre }}</div>
+                        <div class="viaje-fechas">
+                            {{ viaje.fecha_salida|date:"d/m/Y" }} - {{ viaje.fecha_regreso|date:"d/m/Y" }}
+                        </div>
+                        <div class="viaje-precio">€{{ viaje.precio }}</div>
+                        <div class="viaje-plazas">
+                            {{ viaje.calcular_plazas_disponibles }} / {{ viaje.plazas_totales }} plazas
+                        </div>
+                        <a href="{% url 'ver_reserva' viaje.viajeID%}" 
+                        class="viaje-button {% if viaje.calcular_plazas_disponibles == 0 %}agotado{% endif %}">
+                            {% if viaje.calcular_plazas_disponibles > 0 %}
+                                Reservar
+                            {% else %}
+                                Agotado
+                            {% endif %}
+                        </a>
                     </div>
-                    <a href="{% url 'ver_reserva' viaje.viajeID%}" 
-                       class="viaje-button {% if viaje.plazas_disponibles == 0 %}agotado{% endif %}">
-                        {% if viaje.plazas_disponibles > 0 %}
-                            Reservar
-                        {% else %}
-                            Agotado
-                        {% endif %}
-                    </a>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1 style="text-align: center;">No se ha encontrado ningún viaje para el destino y rango de precios seleccionados.</h1>
+    {% endif %}
    
 {%  endblock  %}

@@ -18,7 +18,7 @@
             <strong>{{ viaje.destino.nombre }}</strong><br>
             {{ viaje.fecha_salida|date:"d/m/Y" }} - {{ viaje.fecha_regreso|date:"d/m/Y" }}<br>
             Precio base: €{{ viaje.precio }}<br>
-            Plazas disponibles: {{ viaje.plazas_disponibles }}
+            Plazas disponibles: {{ viaje.calcular_plazas_disponibles}}
         </div>
 
         <form method="POST" action="{% url 'confirmar_reserva' viaje.viajeID %}">
@@ -90,7 +90,7 @@
                     Total: €<span id="total">{{ viaje.precio }}</span>
                 </div>
             
-                {% if viaje.plazas_disponibles > 0 %}
+                {% if viaje.calcular_plazas_disponibles > 0 %}
                     <button type="submit" class="btn">Confirmar y Pagar</button>
                 {% else %}
                     <div class="error">No hay plazas disponibles</div>
