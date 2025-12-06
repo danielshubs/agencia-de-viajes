@@ -6,6 +6,8 @@ from .models import Viaje, Destino
 from django.db.models import Min, Max
 from django.contrib.auth import authenticate, login
 import datetime
+from django.db import IntegrityError
+
 
 # Create your views here.
 def index(request):
@@ -123,3 +125,44 @@ def mis_reservas(request):
     ids = [hash(reserva) for reserva in reservas]
 
     return render(request, 'mis_reservas.html', {'reservas': zip(reservas_updated, ids) })
+
+def login(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        contraseña = request.POST.get("password")
+        
+        #Primero, ver si ya existe este usuario
+        usuario = authenticate(request, username = email, contraseña = contraseña)
+
+        if usuario is not None:
+            #Usuario existe y la contraseña es correcta
+            login(request, usuario)
+            return redirect("index")
+        else:
+            #Usuario no existe
+            #Chequear si existe su email
+            try:
+                usuario_existente = Cliente.objects.get(email= email)
+                #Uusuario existe pero contraseña es incorrecta
+                messages.error(request, "Contraseña incorrecta, vuelve a intentar")
+                return redirect("login")
+            except Cliente.DoesNotExist:
+                #Usuario no existe
+                try: 
+                    nombre_de_email = email.split("@")[0]
+                    usuario_nuevo = Cliente.objects.create_user(
+                        email=email,
+                        username=email,  # Use email as username too
+                        contraseña=contraseña,
+                        nombre=nombre_de_email.capitalize(),
+                        apellido="",  # Empty by default
+                        telefono="",  # Empty by default
+                    )
+                    login(request, usuario_nuevo)
+                    messages.success(request, "Cuenta creada! Bienvenido/a.")
+                    return redirect("index")
+                except IntegrityError:
+                    messages.error(request, "Error al crear la cuenta. Inténtalo de nuevo")
+                    return redirect("login")
+                
+    return redirect("login")
