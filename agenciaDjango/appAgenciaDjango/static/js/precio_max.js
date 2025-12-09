@@ -1,7 +1,32 @@
-document.getElementById("range-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    let precio_maximo = document.getElementById("precio_maximo").value;
-    console.log(precio_maximo);
-    destino = window.location.pathname.split("/")[2]; // destino para re-construir el pathname
-    window.location.href = `/viajes/${destino}/${precio_maximo}`; // funciona tanto desde /destino como desde /destino/precio
+document.addEventListener("DOMContentLoaded", () => {
+
+    const no_viajes = document.getElementById("no_viajes");
+
+    const precio_form = document.getElementById("precio_maximo");
+    const cards_viajes = document.querySelectorAll(".viaje-card");
+
+    const form = document.getElementById("range-form");
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        const precio_max = parseFloat(precio_form.value);
+        let any = false;
+
+        cards_viajes.forEach(card => {
+            const precio_viaje = parseFloat(card.dataset.precio); // precio="{{viaje.precio}}" en el div
+
+            if (precio_viaje <= precio_max) {
+                card.style.display = "block";
+                any = true;
+            } else {
+                card.style.display = "none";
+            }
+
+            if (any) {
+                no_viajes.style.display = "none";
+            } else {
+                no_viajes.style.display = "block";
+            }
+        });
+    });
 });

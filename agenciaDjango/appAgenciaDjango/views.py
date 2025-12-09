@@ -68,11 +68,6 @@ def viajes(request , destino_nombre: str):
     lista_viajes = Viaje.objects.filter(destino=destino.destinoID)
     return render(request, 'viajes.html', {'viajes': lista_viajes})
 
-def viajes_max(request, destino_nombre, precio_maximo):
-    destino = Destino.objects.get(nombre=destino_nombre)
-    lista_viajes = Viaje.objects.filter(destino=destino.destinoID, precio__lte=precio_maximo)
-    return render(request, 'viajes.html', {'viajes': lista_viajes})
-
 def formulario_reserva(request, viaje_id):
     viaje = Viaje.objects.get(viajeID=viaje_id)
     return render(request, 'reservar.html', {

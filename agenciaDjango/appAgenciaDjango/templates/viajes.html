@@ -20,11 +20,12 @@
     </form>
 </div>
 
+<h1 id="no_viajes" style="text-align: center; margin-top: 100px">No se ha encontrado ningún viaje para el destino y rango de precios seleccionados.</h1>
 
     {% if viajes %}
         <div class="viajes-grid">
             {% for viaje in viajes %}
-                <div class="viaje-card">
+                <div class="viaje-card" data-precio="{{viaje.precio}}">
                     <div class="viaje-image">
                         <img src="{% static 'images/' %}{{ viaje.destino.nombre|lower }}.jpg" alt="{{ viaje.destino.nombre }}">
                     </div>
@@ -50,8 +51,6 @@
                 </div>
             {% endfor %}
         </div>
-    {% else %}
-        <h1 style="text-align: center;">No se ha encontrado ningún viaje para el destino y rango de precios seleccionados.</h1>
     {% endif %}
    
 {%  endblock  %}

@@ -94,6 +94,10 @@
     background: #7f8c8d;
 }
 
+#no_viajes {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .viajes-grid {
         grid-template-columns: 1fr;
