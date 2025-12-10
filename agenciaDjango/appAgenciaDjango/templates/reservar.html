@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="{% static 'css/reservar.css' %}?v=1.3">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/calcular_precio_total.js' %}" defer></script>
+{% endblock %}
+
 {% block titulo %}TravelDream - Reservas{% endblock %}
 
 {% block contenido %}
@@ -83,8 +87,7 @@
                     </div>
                 </div>
             </div>
-
-            
+        
             <div class="total-section">
                 <div class="total">
                     Total: €<span id="total">{{ viaje.precio }}</span>
