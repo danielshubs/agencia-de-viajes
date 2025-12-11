@@ -12,4 +12,7 @@ urlpatterns = [
     path('viajes/<str:destino_nombre>', views.viajes, name='viajes'),
     path('confirmar_reserva/<str:viaje_id>',views.confirmar_reserva,name = 'confirmar_reserva'),
     path('mis_reservas/', views.mis_reservas, name='mis_reservas'),
+    path('registro/', views.registro_view, name='registro'),
+    path('registro/procesar/', views.registro_procesar, name='registro_procesar'),
+    path('logout/', views.logout_view, name='logout'),
 ]
