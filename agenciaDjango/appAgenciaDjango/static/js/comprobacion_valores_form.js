@@ -1,14 +1,22 @@
-const form = document.querySelector("form");
 const emailForm = document.getElementById("email");
-const passwordForm = document.getElementById("password"); // por ahora no se si validar algo en la password pero por si aca lo paso ya
+const passwordForm = document.getElementById("password");
 
-// div debajo del input de email
+// nuevos divs
 let emailError = document.createElement("div");
 emailError.className = "error";
+
+let passwordError = document.createElement("div");
+passwordError.className = "error";
+
 // no he conseguido que funcionara desde el css, posible cambio
 emailError.style.display = "none"; emailError.style.color = "red"; emailError.style.fontSize = "15px"; emailError.style.marginTop = "10px"; emailError.style.border = "1px solid red"
-emailForm.insertAdjacentElement("afterend", emailError);
+passwordError.style.display = "none"; passwordError.style.color = "red"; passwordError.style.fontSize = "15px"; passwordError.style.marginTop = "10px"; passwordError.style.border = "1px solid red"
 
+emailForm.insertAdjacentElement("afterend", emailError);
+passwordForm.insertAdjacentElement("afterend", passwordError);
+
+
+const form = document.querySelector("form");
 form.addEventListener("submit", function(event) {
 
     const email = emailForm.value;
@@ -16,9 +24,19 @@ form.addEventListener("submit", function(event) {
 
     // método de validación del email, tiene que ser "algo@algo.algo" : solo 1 @ obligatorio, después del @ solo 1 punto obligatorio, sin separaciones
     const emailFormato = /^[^\s@]+@[^\s@.]+\.[^\s@.]+$/;
-    if(!emailFormato.test(email)) { // si falla
+    if(!emailFormato.test(email)) { // si el email es incorrecto respecto a dicho formato
         event.preventDefault();
-        emailError.textContent = `El Email insertado no es valido (${email})`;
+        emailError.textContent = `El Email insertado no es válido (${email})`;
         emailError.style.display = "block";   
+    } else {
+        emailError.style.display = "none";
+    }
+
+    if(password.length < 8) { // si la contraseña tiene menos de 8 carácteres
+        event.preventDefault();
+        passwordError.textContent = `La contraseña indicada no es válida, tiene menos de 8 carácteres (${email})`;
+        passwordError.style.display = "block";   
+    } else {
+        passwordError.style.display = "none";
     }
 });
