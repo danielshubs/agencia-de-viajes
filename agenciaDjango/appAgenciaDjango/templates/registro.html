@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/comprobacion_valores_form.js' %}"></script>
+{% endblock %}
+
 {% block titulo %}TravelDream - Registro{% endblock %}
 
 {% block contenido %}
@@ -19,7 +23,7 @@
 
         <!-- Nombre Field -->
         <div class="form-group">
-            <label for="nombre">Nombre completo *</label>
+            <label for="nombre">Nombre y Apellido *</label>
             <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
         </div>
 
