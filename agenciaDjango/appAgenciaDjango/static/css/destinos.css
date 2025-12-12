@@ -126,6 +126,26 @@
     box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
 }
 
+.destinos-busqueda {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#barra-busqueda {
+    width: 100%;
+    font-size: 20px;
+}
+
+#no_destinos {
+    display: none;
+    text-align: center;
+    margin-top: 100px;
+}
+
 /* Estilos para mensajes */
 .messages-container {
     position: fixed;

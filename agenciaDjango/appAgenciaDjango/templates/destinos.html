@@ -6,17 +6,30 @@
 <link rel="stylesheet" href="{% static 'css/destinos.css' %}?v=1.3">
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/buscar_destino.js' %}"></script>
+{% endblock %}
+
 {% block titulo %}TravelDream - Destinos{% endblock %}
 
+
 {% block contenido %}
+
 <div class="destinos-hero">
     <h1 class="destinos-title">Nuestros Destinos</h1>
     <p class="destinos-subtitle">Descubre los lugares más fascinantes del mundo con nuestros paquetes de viaje cuidadosamente seleccionados</p>
 </div>
 
+<div class="destinos-busqueda">
+    <input type="text" id="barra-busqueda" name="barra-busqueda">
+</div>
+
+{% comment %} El CSS no coge algunos de los estilos asi que está también inline, posible cambio {% endcomment %}
+<h2 id="no_destinos" style="text-align: center; margin-top: 100px">Ningún destino coincide con la búsqueda</h2>
+
 <div class="destinos-grid">
     {% for d in destinos %}
-        <div class="destino-card">
+        <div class="destino-card" data-nombre="{{d.nombre}}">
             <div class="destino-image">
                 <img src="{% static 'images/' %}{{ d.nombre|lower }}.jpg?v=2" alt="{{d.nombre}}">
             </div>

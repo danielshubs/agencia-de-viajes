@@ -10,8 +10,8 @@
 <script src="{% static 'js/precio_max.js' %}"></script>
 {% endblock %}
 
-{% block contenido %}
 
+{% block contenido %}
 
 <div class="viajes-range">
     <form action="" id="range-form" name="range-form">
@@ -20,6 +20,7 @@
     </form>
 </div>
 
+{% comment %} El CSS no coge algunos de los estilos asi que está también inline, posible cambio {% endcomment %}
 <h1 id="no_viajes" style="text-align: center; margin-top: 100px">No se ha encontrado ningún viaje para el destino y rango de precios seleccionados.</h1>
 
     {% if viajes %}
