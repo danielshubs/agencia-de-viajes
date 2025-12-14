@@ -1,4 +1,3 @@
-
 seguro = document.querySelector('#seguro');
 total = document.querySelector("#total");
 const base_price = parseFloat(total.textContent);

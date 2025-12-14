@@ -53,6 +53,9 @@ class Reserva(models.Model):
     viajeID = models.ForeignKey(Viaje, on_delete=models.CASCADE)
     fecha_reserva = models.DateField(auto_now_add=True)
     seguro_viaje = models.BooleanField(default=False)
+    
+    def precio_total(self):
+        return self.viajeID.precio + 50*self.seguro_viaje
 
     def __str__(self):
         return f"Reserva {self.viajeID} - {self.clienteID.nombre}"
