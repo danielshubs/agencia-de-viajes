@@ -149,6 +149,22 @@ input[type="text"]:focus {
     border: 1px solid #bee5eb;
 }
 
+
+.error {
+  display: none;
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.error.visible {
+  display: block;
+  border: 1px solid #e74c3c;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #fdecea;
+}
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .menu-container {

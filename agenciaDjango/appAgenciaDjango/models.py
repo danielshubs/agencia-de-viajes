@@ -39,7 +39,6 @@ class Viaje(models.Model):
     def __str__(self):
         return f"{self.viajeID} - {self.destino.nombre}"
 
-    # Todo : Crear funcion para calcular el numero de plazas totales del viaje en base al numero de reservas
     def calcular_plazas_disponibles(self):
         reservas_count = Reserva.objects.filter(viajeID=self.viajeID).count()
         return self.plazas_totales - reservas_count

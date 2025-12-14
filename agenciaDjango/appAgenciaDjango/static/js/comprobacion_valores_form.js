@@ -16,11 +16,7 @@ confirmationError.className = "error";
 let nombreError = document.createElement("div");
 nombreError.className = "error";
 
-// no he conseguido que funcionara desde el css, posible cambio
-emailError.style.display = "none"; emailError.style.color = "red"; emailError.style.fontSize = "15px"; emailError.style.marginTop = "10px"; emailError.style.border = "1px solid red"
-passwordError.style.display = "none"; passwordError.style.color = "red"; passwordError.style.fontSize = "15px"; passwordError.style.marginTop = "10px"; passwordError.style.border = "1px solid red"
-confirmationError.style.display = "none"; confirmationError.style.color = "red"; confirmationError.style.fontSize = "15px"; confirmationError.style.marginTop = "10px"; confirmationError.style.border = "1px solid red"
-nombreError.style.display = "none"; nombreError.style.color = "red"; nombreError.style.fontSize = "15px"; nombreError.style.marginTop = "10px"; nombreError.style.border = "1px solid red"
+
 
 emailForm.insertAdjacentElement("afterend", emailError);
 passwordForm.insertAdjacentElement("afterend", passwordError);
@@ -41,7 +37,7 @@ form.addEventListener("submit", function(event) {
     if(!emailFormato.test(email)) { // si el email es incorrecto respecto a dicho formato
         event.preventDefault();
         emailError.textContent = `El email insertado no es válido (${email})`;
-        emailError.style.display = "block";   
+        emailError.classList.add("visible");
     } else {
         emailError.style.display = "none";
     }
@@ -49,7 +45,7 @@ form.addEventListener("submit", function(event) {
     if(password.length < 8) { // si la contraseña tiene menos de 8 carácteres
         event.preventDefault();
         passwordError.textContent = `La contraseña indicada no es válida, tiene menos de 8 carácteres`;
-        passwordError.style.display = "block";   
+        passwordError.classList.add("visible");
     } else {
         passwordError.style.display = "none";
     }
@@ -57,7 +53,7 @@ form.addEventListener("submit", function(event) {
     if(confirmation != password) {
         event.preventDefault();
         confirmationError.textContent = `La confirmación no coincide con la contraseña primeramente indicada`;
-        confirmationError.style.display = "block";   
+        confirmationError.classList.add("visible")
     } else {
         confirmationError.style.display = "none";
     }
@@ -67,7 +63,7 @@ form.addEventListener("submit", function(event) {
     if(!nombreFormato.test(nombre)) {
         event.preventDefault();
         nombreError.textContent = `Inserte exactamente 1 nombre y 1 apellido. El nombre insertado no es válido (${nombre})`;
-        nombreError.style.display = "block";   
+        nombreError.classList.add("visible");
     } else {
         nombreError.style.display = "none";
     }
