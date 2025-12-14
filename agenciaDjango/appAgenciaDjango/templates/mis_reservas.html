@@ -22,7 +22,7 @@
             <p>Destino: {{ reserva.viajeID.destino.nombre }}</p>
             <p>Fecha de salida: {{ reserva.viajeID.fecha_salida|date:"d/m/Y" }}</p>
             <p>Fecha de regreso: {{ reserva.viajeID.fecha_regreso|date:"d/m/Y" }}</p>
-            <p>Precio Total: €{{ reserva.viajeID.precio }}</p>
+            <p>Precio Total: €{{ reserva.precio_total }}</p>
         </div>
         <div class="reserva-image">
             <img src="{% static 'images/' %}{{ reserva.viajeID.destino.nombre }}.jpg?v=2" alt="{{reserva.viajeID.destino.nombre}}">

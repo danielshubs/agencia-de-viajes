@@ -96,6 +96,8 @@
 
 #no_viajes {
     display: none;
+    text-align: center;
+    margin-top: 100px;
 }
 
 @media (max-width: 768px) {
