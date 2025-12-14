@@ -1,87 +1,118 @@
-/* Contenedor general */
+/* Contenedor de tarjetas */
 .reservas-container {
-    max-width: 900px;
-    margin: 40px auto;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
 }
 
-/* Título de usuario */
-.user-greeting {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-/* Texto informativo */
-.user-info {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-/* Tarjeta de reserva */
+/* Tarjeta de reserva como grid */
 .reserva-card {
-    background: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* izquierda info, derecha foto */
     border-radius: 12px;
-    padding: 25px;
+    overflow: hidden;
     margin-bottom: 25px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 220px;
 }
 
+/* Hover efecto */
 .reserva-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
-/* Lista de detalles */
-.reserva-card p {
-    margin: 8px 0;
-    color: #444;
-    font-size: 1rem;
+/* Parte izquierda: información */
+.reserva-card-left {
+    background-color: #fff;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centra verticalmente */
+    color: #333;
 }
 
-/* Encabezado */
+/* Títulos y párrafos de la info */
 .reserva-title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #4a90e2;
+    margin-top: 0;
     margin-bottom: 15px;
+    font-size: 1.4rem;
 }
 
-/* Separador */
-.reserva-divider {
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 20px 0;
+.reserva-card-left p {
+    margin: 8px 0;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
-/* Estado sin reservas */
-.no-reservas {
-    padding: 20px;
-    background: #f3f6fa;
-    border-left: 4px solid #4a90e2;
-    border-radius: 8px;
+.reserva-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    display: block; /* Asegura comportamiento de bloque */
+    position: relative; /* Para mejor control */
+}
+
+.reserva-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* Centra el recorte */
+    display: block; /* Elimina espacio fantasma debajo de imágenes */
+    position: absolute; /* Ocupa todo el espacio */
+    top: 0;
+    left: 0;
+}
+.destino-card:hover .destino-image img {
+    transform: scale(1.05);
+}
+/* Saludo del usuario */
+.user-greeting {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.user-info {
     font-size: 1.1rem;
-    color: #2c3e50;
-    max-width: 600px;
-    margin: 30px auto;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Mensaje cuando no hay reservas */
+.no-reservas {
     text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 2px dashed #ddd;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .reservas-container {
-        padding: 10px;
+    .reserva-card {
+        grid-template-columns: 1fr; /* apila la info y la foto en móviles */
     }
 
-    .reserva-card {
-        padding: 18px;
+    .reserva-card-left,
+    .reserva-card-right {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .reserva-card-left {
+        padding: 20px 15px;
     }
 
     .reserva-title {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    .reserva-card-left p {
+        font-size: 0.9rem;
     }
 }
