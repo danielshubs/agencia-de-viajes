@@ -1,38 +1,43 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/mis_reservas.css' %}">
 {% endblock %}
+
 {% block extra_js %}
 <script src="{% static 'js/mis_reservas.js' %}"></script>
 {% endblock %}
+
 {% block titulo %}Mis Viajes{% endblock %}
 
 {% block contenido %}
 <div class="reservas-container">
-
     <p class="user-greeting">Hola {{ user.username }}</p>
     <p class="user-info">Aquí tienes un resumen de tus reservas:</p>
-
-<div class="reservas-grid">
-    {% for reserva, id in reservas %} 
-    <div class="reserva-card">
-        <div class="reserva-card-left">
-            <h3 class="reserva-title">Reserva #{{ id }}</h3>
-            <p>Destino: {{ reserva.viajeID.destino.nombre }}</p>
-            <p>Fecha de salida: {{ reserva.viajeID.fecha_salida|date:"d/m/Y" }}</p>
-            <p>Fecha de regreso: {{ reserva.viajeID.fecha_regreso|date:"d/m/Y" }}</p>
-            <p>Precio Total: €{{ reserva.precio_total }}</p>
-        </div>
-        <div class="reserva-image">
-            <img src="{% static 'images/' %}{{ reserva.viajeID.destino.nombre }}.jpg?v=2" alt="{{reserva.viajeID.destino.nombre}}">
-        </div>
-    </div>
-{% empty %}
-    <p class="no-reservas">No tienes reservas aún.</p>
-{% endfor %}
-</div>
     
-
+    <!-- Barra de búsqueda -->
+    <div class="search-container">
+        <input type="text" id="filter-destino" placeholder="Buscar por destino...">
+    </div>
+    
+    <div class="reservas-grid">
+        {% for reserva, id in reservas %} 
+        <div class="reserva-card" data-destino="{{ reserva.viajeID.destino.nombre|lower }}">
+            <div class="reserva-card-left">
+                <h3 class="reserva-title">Reserva #{{ id }}</h3>
+                <p class="destino-text">Destino: {{ reserva.viajeID.destino.nombre }}</p>
+                <p>Fecha de salida: {{ reserva.viajeID.fecha_salida|date:"d/m/Y" }}</p>
+                <p>Fecha de regreso: {{ reserva.viajeID.fecha_regreso|date:"d/m/Y" }}</p>
+                <p>Precio Total: €{{ reserva.precio_total }}</p>
+            </div>
+            <div class="reserva-image">
+                <img src="{% static 'images/' %}{{ reserva.viajeID.destino.nombre }}.jpg?v=2" alt="{{reserva.viajeID.destino.nombre}}">
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-reservas">No tienes reservas aún.</p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

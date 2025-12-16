@@ -5,7 +5,9 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}?v=1.5">
 {% endblock %}
-
+{% block extra_js %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
 {% block titulo %}TravelDream - Inicio{% endblock %}
 
 {% block contenido %}
@@ -105,7 +107,7 @@
     <div class="cta-container">
         <h2 class="cta-title">¿Listo para tu próxima aventura?</h2>
         <p class="cta-text">No esperes más para hacer realidad tus sueños de viaje. Nuestros expertos están listos para ayudarte a planificar la experiencia perfecta.</p>
-        <a class="cta-button">Reservar Ahora</a>
+        <a href="{% url 'destinos' %}" class="cta-button">Reservar Ahora</a>
     </div>
 </section>
 {% endblock %}
