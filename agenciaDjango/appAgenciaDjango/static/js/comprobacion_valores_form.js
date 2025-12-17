@@ -5,16 +5,16 @@ const nombreForm = document.getElementById("nombre");
 
 // nuevos divs
 let emailError = document.createElement("div");
-emailError.className = "error";
+emailError.className = "errorDiv";
 
 let passwordError = document.createElement("div");
-passwordError.className = "error";
+passwordError.className = "errorDiv";
 
 let confirmationError = document.createElement("div");
-confirmationError.className = "error";
+confirmationError.className = "errorDiv";
 
 let nombreError = document.createElement("div");
-nombreError.className = "error";
+nombreError.className = "errorDiv";
 
 
 
