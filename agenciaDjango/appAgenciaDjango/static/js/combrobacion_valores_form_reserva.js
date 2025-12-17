@@ -9,25 +9,25 @@ const cvvForm = document.getElementById("cc_cvv");
 
 
 let nombreError = document.createElement("div");
-nombreError.className = "error";
+nombreError.className = "errorDiv";
 
 let apellidoError = document.createElement("div");
-apellidoError.className = "error";
+apellidoError.className = "errorDiv";
 
 let emailError = document.createElement("div");
-emailError.className = "error";
+emailError.className = "errorDiv";
 
 let telefonoError = document.createElement("div");
-telefonoError.className = "error";
+telefonoError.className = "errorDiv";
 
 let tarjetaError = document.createElement("div");
-tarjetaError.className = "error";
+tarjetaError.className = "errorDiv";
 
 let expiracionError = document.createElement("div");
-expiracionError.className = "error";
+expiracionError.className = "errorDiv";
 
 let cvvError = document.createElement("div");
-cvvError.className = "error";
+cvvError.className = "errorDiv";
 
 // Insertar errores
 nombreForm.insertAdjacentElement("afterend", nombreError);

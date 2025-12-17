@@ -5,9 +5,9 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}?v=1.5">
 {% endblock %}
-
-
-
+{% block extra_js %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
 {% block titulo %}TravelDream - Inicio{% endblock %}
 
 {% block contenido %}
@@ -46,21 +46,25 @@
 <section class="destinations-section">
     <div class="destinations-container">
         <h2 class="section-title">Destinos Populares</h2>
+        
         <div class="destinations-grid">
-            {% for d in destinos %}
+            {% for d in destinos|slice:":6" %}
                 <div class="destination-card">
                     <div class="destination-image">
-                        <img src="{% static 'images/' %}{{ d.nombre|lower }}.jpg?v=2" alt="{{ d.nombre }}"></a>
+                        <img src="{% static 'images/' %}{{ d.nombre|lower }}.jpg?v=2" alt="{{ d.nombre }}">
                     </div>
                     <div class="destination-info">
                         <h3 class="destination-name">{{d.nombre}}, {{d.pais}}</h3>
                         <p class="destination-description">{{d.descripcion}}</p>
-                        <div class="destination-price">Desde €650</div>
+                        <div class="destination-price">
+                            Desde €{{ d.precio_base|default:"650" }}
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
-        <div style="text-align: center;">
+        
+        <div style="text-align: center; margin-top: 30px;">
             <a href="{% url 'destinos' %}" class="explore-button">Explora más destinos</a>
         </div>
     </div>
@@ -71,34 +75,69 @@
     <div class="testimonials-container">
         <h2 class="section-title">Lo que dicen nuestros clientes</h2>
         <div class="testimonials-grid">
+            {% for reseña in reseñas %}
             <div class="testimonial-card">
-                <p class="testimonial-text">"Mi viaje a Japón con TravelDream superó todas mis expectativas. Cada detalle estaba cuidadosamente planeado y pude disfrutar sin preocupaciones."</p>
+                <!-- Sistema de estrellas simple -->
+                <div class="star-rating">
+                    <!-- Estrella 1 -->
+                    {% if reseña.puntuacion >= 1 %}
+                        <span class="star">★</span>
+                    {% else %}
+                        <span class="star empty">☆</span>
+                    {% endif %}
+                    
+                    <!-- Estrella 2 -->
+                    {% if reseña.puntuacion >= 2 %}
+                        <span class="star">★</span>
+                    {% else %}
+                        <span class="star empty">☆</span>
+                    {% endif %}
+                    
+                    <!-- Estrella 3 -->
+                    {% if reseña.puntuacion >= 3 %}
+                        <span class="star">★</span>
+                    {% else %}
+                        <span class="star empty">☆</span>
+                    {% endif %}
+                    
+                    <!-- Estrella 4 -->
+                    {% if reseña.puntuacion >= 4 %}
+                        <span class="star">★</span>
+                    {% else %}
+                        <span class="star empty">☆</span>
+                    {% endif %}
+                    
+                    <!-- Estrella 5 -->
+                    {% if reseña.puntuacion >= 5 %}
+                        <span class="star">★</span>
+                    {% else %}
+                        <span class="star empty">☆</span>
+                    {% endif %}
+                    
+                    <span class="rating-number">{{ reseña.puntuacion }}/5</span>
+                </div>
+                
+                <p class="testimonial-text">"{{ reseña.reseña }}"</p>
                 <div class="testimonial-author">
                     <div class="author-info">
-                        <h4>María Cortés</h4>
-                        <p>Viajó a Tokio</p>
+                        <h4>{{ reseña.nombre }}</h4>
+                        {% if reseña.destino_viajado %}
+                            <p>Viajó a {{ reseña.destino_viajado }}</p>
+                        {% else %}
+                            <p>Cliente satisfecho</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Excelente servicio al cliente. Me ayudaron a planificar el viaje de mis sueños a Bali y todo salió perfecto. ¡Definitivamente volveré a confiar en ellos!"</p>
-                <div class="testimonial-author">
-                    <div class="author-info">
-                        <h4>Javier Gómez</h4>
-                        <p>Viajó a Bali</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Gracias a TravelDream pude disfrutar de una luna de miel inolvidable en París. Su atención personalizada hizo toda la diferencia."</p>
-                <div class="testimonial-author">
-                    <div class="author-info">
-                        <h4>Laura Rodríguez</h4>
-                        <p>Viajó a París</p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
+        
+        <!-- Opcional: Mensaje si no hay reseñas -->
+        {% if not reseñas %}
+        <div style="text-align: center; padding: 40px;">
+            <p style="color: #666; font-style: italic;">Aún no hay reseñas disponibles.</p>
+        </div>
+        {% endif %}
     </div>
 </section>
 
@@ -107,7 +146,24 @@
     <div class="cta-container">
         <h2 class="cta-title">¿Listo para tu próxima aventura?</h2>
         <p class="cta-text">No esperes más para hacer realidad tus sueños de viaje. Nuestros expertos están listos para ayudarte a planificar la experiencia perfecta.</p>
-        <a class="cta-button">Reservar Ahora</a>
+        <a href="{% url 'destinos' %}" class="cta-button">Reservar Ahora</a>
     </div>
 </section>
+
+<!-- Popup Newsletter -->
+<div id="newsletterPopup" class="newsletter-modal">
+    <div class="newsletter-content">
+        <span class="close-newsletter">&times;</span>
+        <h3>¡No te pierdas nuestras ofertas!</h3>
+        <p>Suscríbete para recibir descuentos exclusivos y novedades de viajes</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Tu email" required>
+            <button type="submit">Suscribirme</button>
+        </form>
+        <label class="newsletter-privacy">
+            <input type="checkbox" required>
+            Acepto la política de privacidad
+        </label>
+    </div>
+</div>
 {% endblock %}

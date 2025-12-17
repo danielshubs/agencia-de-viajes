@@ -91,6 +91,33 @@
     border-radius: 10px;
     border: 2px dashed #ddd;
 }
+/* Barra de búsqueda */
+.search-container {
+    margin: 20px 0 30px;
+    text-align: center;
+}
+
+#filter-destino {
+    width: 300px;
+    max-width: 90%;
+    padding: 14px 18px;
+    font-size: 18px;
+    border: 2px solid #4a90e2;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#filter-destino:focus {
+    border-color: #3a7bc8;
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.25);
+}
+
+#filter-destino::placeholder {
+    color: #999;
+}
+
+
 
 /* Buscador */
 #barra-busqueda {
@@ -106,24 +133,10 @@
 /* Responsive */
 @media (max-width: 768px) {
     .reserva-card {
-        grid-template-columns: 1fr; /* apila la info y la foto en móviles */
+        grid-template-columns: 1fr;
     }
-
-    .reserva-card-left,
-    .reserva-card-right {
-        width: 100%;
-        min-height: 200px;
-    }
-
-    .reserva-card-left {
-        padding: 20px 15px;
-    }
-
-    .reserva-title {
-        font-size: 1.2rem;
-    }
-
-    .reserva-card-left p {
-        font-size: 0.9rem;
+    
+    #filter-destino {
+        width: 90%;
     }
 }

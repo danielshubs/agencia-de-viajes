@@ -1,31 +1,30 @@
-// mis_reservas.js - Funcionalidades básicas
 document.addEventListener('DOMContentLoaded', function() {
-   
+    // 1. DECLARAR 'cards' aquí (añade esta línea)
+    const cards = document.querySelectorAll('.reserva-card');
     
-    // Filtro por destino
-    const filterInput = document.createElement('input');
-    filterInput.type = 'text';
-    filterInput.placeholder = 'Buscar destino...';
-    filterInput.style.cssText = `
-        padding: 10px;
-        margin-bottom: 20px;
-        width: 300px;
-        max-width: 100%;
-    `;
+    const filterInput = document.getElementById('filter-destino');
     
-    const greeting = document.querySelector('.user-greeting');
-    greeting.parentNode.insertBefore(filterInput, greeting.nextElementSibling);
-
+    // Si no hay reservas, salir
+    if (cards.length === 0) return;
+    
+    // 2. Ahora ya puedes usar 'cards' aquí
     filterInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        cards.forEach(card => {
-            const destino = card.querySelector('p:nth-child(2)').textContent.toLowerCase();
-            card.style.display = destino.includes(searchTerm) ? 'flex' : 'none';
+        const searchTerm = this.value.toLowerCase().trim();
+        
+        cards.forEach(card => {  // ✅ Ahora cards está definida
+            const destino = card.getAttribute('data-destino') || 
+                           card.querySelector('.destino-text').textContent.toLowerCase();
+            
+            if (destino.includes(searchTerm) || searchTerm === '') {
+                card.style.display = 'grid';
+            } else {
+                card.style.display = 'none';
+            }
         });
     });
-
-    // 3. Contador de días para próximos viajes
-    cards.forEach(card => {
+    
+    // 3. Y también aquí
+    cards.forEach(card => {  // ✅ Ahora cards está definida
         const fechaTexto = card.querySelector('p:nth-child(3)').textContent;
         const fechaMatch = fechaTexto.match(/\d{2}\/\d{2}\/\d{4}/);
         
