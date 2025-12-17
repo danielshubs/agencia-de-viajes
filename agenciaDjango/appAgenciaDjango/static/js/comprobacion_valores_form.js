@@ -37,7 +37,7 @@ form.addEventListener("submit", function(event) {
     if(!emailFormato.test(email)) { // si el email es incorrecto respecto a dicho formato
         event.preventDefault();
         emailError.textContent = `El email insertado no es válido (${email})`;
-        emailError.classList.add("visible");
+        emailError.style.display = "block";
     } else {
         emailError.style.display = "none";
     }
@@ -45,7 +45,7 @@ form.addEventListener("submit", function(event) {
     if(password.length < 8) { // si la contraseña tiene menos de 8 carácteres
         event.preventDefault();
         passwordError.textContent = `La contraseña indicada no es válida, tiene menos de 8 carácteres`;
-        passwordError.classList.add("visible");
+        passwordError.style.display = "block";
     } else {
         passwordError.style.display = "none";
     }
@@ -53,7 +53,7 @@ form.addEventListener("submit", function(event) {
     if(confirmation != password) {
         event.preventDefault();
         confirmationError.textContent = `La confirmación no coincide con la contraseña primeramente indicada`;
-        confirmationError.classList.add("visible")
+        confirmationError.style.display = "block";
     } else {
         confirmationError.style.display = "none";
     }
@@ -63,7 +63,7 @@ form.addEventListener("submit", function(event) {
     if(!nombreFormato.test(nombre)) {
         event.preventDefault();
         nombreError.textContent = `Inserte exactamente 1 nombre y 1 apellido. El nombre insertado no es válido (${nombre})`;
-        nombreError.classList.add("visible");
+        nombreError.style.display = "block";
     } else {
         nombreError.style.display = "none";
     }
