@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404 , redirect
 from . import models
-from .models import Viaje , Cliente , Destino , Reserva
+from .models import Viaje , Cliente , Destino , Reserva, Resena
 from django.contrib import messages
 from .models import Viaje, Destino
 from django.db.models import Min, Max
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
-from django.contrib.auth.models import User  # ¡IMPORTANTE! Importar User con mayúscula
+from django.contrib.auth.models import User 
 import datetime
 from django.db import IntegrityError
 from django.contrib.auth import logout
@@ -15,6 +15,12 @@ from django.contrib.auth import logout
 # Create your views here.
 def index(request):
     lista_destinos = Destino.objects.all()[:3]
+    reseñas = Resena.objects.all()[:6]  # Obtener las 6 reseñas más recientes
+    
+    return render(request, 'index.html', {
+        'destinos': lista_destinos,
+        'reseñas': reseñas  # Cambia el nombre a reseñas (con ñ) o usa 'reviews'
+    })
     return render(request, 'index.html', {'destinos': lista_destinos})
 
 def detalle_destino(request, destinoID):

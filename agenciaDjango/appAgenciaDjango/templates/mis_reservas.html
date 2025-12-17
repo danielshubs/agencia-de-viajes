@@ -21,6 +21,7 @@
         <input type="text" id="filter-destino" placeholder="Buscar por destino...">
     </div>
     
+    
     <div class="reservas-grid">
         {% for reserva, id in reservas %} 
         <div class="reserva-card" data-destino="{{ reserva.viajeID.destino.nombre|lower }}">
