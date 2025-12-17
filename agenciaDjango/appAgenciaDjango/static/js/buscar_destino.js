@@ -1,6 +1,6 @@
 const no_destinos = document.getElementById("no_destinos");
 const cards_destinos = document.querySelectorAll(".destino-card");
-
+const cards_reserva = document.querySelectorAll(".reserva-card");
 const barra = document.getElementById("barra-busqueda");
 barra.addEventListener("input", function(event) {
     const busqueda = barra.value;
@@ -23,5 +23,21 @@ barra.addEventListener("input", function(event) {
             no_destinos.style.display = "block";
         }
     });
+
+    cards_reserva.forEach(card => {
+        nombre = card.dataset.nombre;
+
+        if (busqueda.length <= nombre.length && nombre.toLowerCase().slice(0, busqueda.length) == busqueda.toLowerCase()) {
+            card.style.display = "block";
+            any = true;
+        } else {
+            card.style.display = "none";
+        }
+         if (any) {
+        no_destinos.style.display = "none";
+        } else {
+            no_destinos.style.display = "block";
+        }
+        });
 
 });
