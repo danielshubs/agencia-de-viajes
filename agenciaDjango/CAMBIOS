@@ -1,0 +1,12 @@
+Implementación login  junto con authenticate para iniciar sesión y poder obtener datos del usuario registrado de forma sencilla
+Implementación de logout para que el usuario pueda salir o cambiar de cuenta
+Cambio de la estructura general del html , ahora esta dividido en un indice en el que el usuario puede ver los destinos disponibles , ver las reservas y hacer logout , dentro de los destinos podemos obtener los posibles viajes y dentro de los viajes hacer una reserva
+Implementación de JS en los formularios de login y de registro para comprobar los valores de entrada, no permitir que se envíe si no son correctos
+Barra de búsqueda en la pestaña de destinos para buscar por nombre
+Filtro de viajes por precio máximo dentro de un destino específico
+Implementación de JS a la hora de hacer una reserva , tanto para añadir el seguro como para verificar que los campos del form estan rellenados con la forma correcta antes de enviarlos
+Uso de JS para efectos visuales en el botón al confirmar la reserva
+Añadir tabla reseñas y mostrarla en el index.
+Añadir newsletter en index
+Añadir mis_reservas html y funcionalidades javascript.
+Implementacion js para filtrar y buscar tus reservas con un destino concreto
