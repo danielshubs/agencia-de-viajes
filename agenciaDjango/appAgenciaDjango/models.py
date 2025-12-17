@@ -58,3 +58,19 @@ class Reserva(models.Model):
 
     def __str__(self):
         return f"Reserva {self.viajeID} - {self.clienteID.nombre}"
+
+
+
+class Resena(models.Model):
+    nombre = models.CharField(max_length=100)
+    puntuacion = models.IntegerField(
+        choices=[(i, str(i)) for i in range(1, 6)],  
+        default=5
+    )
+    reseña = models.TextField()
+    fecha = models.DateTimeField(auto_now_add=True)
+    destino_viajado = models.CharField(max_length=100, blank=True, null=True)
+    
+    def __str__(self):
+        return f"{self.nombre} - {self.puntuacion}/5"
+    
