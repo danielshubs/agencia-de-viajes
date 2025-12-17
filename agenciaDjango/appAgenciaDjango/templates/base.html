@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 {% load static %}
 
 <html lang="es">
@@ -37,18 +37,27 @@
             
             <!-- Mostrar diferentes opciones según si está autenticado o no -->
             {% if user.is_authenticated %}
-                <!-- Usuario logueado: mostrar Mis Reservas y Cerrar Sesión -->
                 <div class="login-link">
                     <a href="{% url 'logout' %}">Cerrar Sesión</a>
-                </div>            
+                </div>
             {% else %}
-                <!-- Usuario no logueado: mostrar Iniciar Sesión  -->
                 <div class="login-link">
                     <a href="{% url 'login' %}">Iniciar Sesión</a>
-                </div>                
+                </div>
             {% endif %}
         </div>
     </header>
+
+    <!-- BLOQUE DE MENSAJES -->
+    {% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     <!-- Contenido Principal -->
     <main id="content">

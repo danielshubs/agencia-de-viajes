@@ -7,11 +7,11 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/comprobacion_valores_form.js' %}"></script>
+<script src="{% static 'js/comprobacion_valores_form.js' %}" defer></script>
 {% endblock %}
 
 
-{% block titulo %}TravelDream - Iniciar Sesión / Registro{% endblock %}
+{% block titulo %}TravelDream - Iniciar Sesión{% endblock %}
 
 {% block contenido %}
 
@@ -21,7 +21,6 @@
     <h2 class="login-title">Iniciar Sesión o Registrarse</h2>
     <form action="{% url 'login_enter' %}" method="POST">
         {% csrf_token %}
-        
         <!-- Email Field -->
         <div class="form-group">
             <label for="email">Correo electrónico *</label>
