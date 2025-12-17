@@ -74,7 +74,7 @@ form.addEventListener("submit", function (event) {
     }
 
     // TELÉFONO (mínimo 9 números)
-    if (telefonoForm.value.length < 9) {
+    if (telefonoForm.value.length < 9 ) {
          event.preventDefault();
         telefonoError.textContent = "El teléfono debe tener al menos 9 números";
         telefonoError.classList.add("visible");
