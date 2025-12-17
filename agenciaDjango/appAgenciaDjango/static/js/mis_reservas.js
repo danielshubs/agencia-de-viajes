@@ -1,17 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. DECLARAR 'cards' aquí (añade esta línea)
     const cards = document.querySelectorAll('.reserva-card');
     
     const filterInput = document.getElementById('filter-destino');
     
-    // Si no hay reservas, salir
     if (cards.length === 0) return;
     
-    // 2. Ahora ya puedes usar 'cards' aquí
     filterInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase().trim();
         
-        cards.forEach(card => {  // ✅ Ahora cards está definida
+        cards.forEach(card => {  
             const destino = card.getAttribute('data-destino') || 
                            card.querySelector('.destino-text').textContent.toLowerCase();
             
@@ -23,8 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 3. Y también aquí
-    cards.forEach(card => {  // ✅ Ahora cards está definida
+    cards.forEach(card => {  
         const fechaTexto = card.querySelector('p:nth-child(3)').textContent;
         const fechaMatch = fechaTexto.match(/\d{2}\/\d{2}\/\d{4}/);
         

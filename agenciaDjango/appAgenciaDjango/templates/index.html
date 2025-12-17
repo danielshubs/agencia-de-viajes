@@ -79,41 +79,11 @@
             <div class="testimonial-card">
                 <!-- Sistema de estrellas simple -->
                 <div class="star-rating">
-                    <!-- Estrella 1 -->
-                    {% if reseña.puntuacion >= 1 %}
-                        <span class="star">★</span>
-                    {% else %}
-                        <span class="star empty">☆</span>
-                    {% endif %}
-                    
-                    <!-- Estrella 2 -->
-                    {% if reseña.puntuacion >= 2 %}
-                        <span class="star">★</span>
-                    {% else %}
-                        <span class="star empty">☆</span>
-                    {% endif %}
-                    
-                    <!-- Estrella 3 -->
-                    {% if reseña.puntuacion >= 3 %}
-                        <span class="star">★</span>
-                    {% else %}
-                        <span class="star empty">☆</span>
-                    {% endif %}
-                    
-                    <!-- Estrella 4 -->
-                    {% if reseña.puntuacion >= 4 %}
-                        <span class="star">★</span>
-                    {% else %}
-                        <span class="star empty">☆</span>
-                    {% endif %}
-                    
-                    <!-- Estrella 5 -->
-                    {% if reseña.puntuacion >= 5 %}
-                        <span class="star">★</span>
-                    {% else %}
-                        <span class="star empty">☆</span>
-                    {% endif %}
-                    
+                    {% if reseña.puntuacion >= 1 %}★{% else %}☆{% endif %}
+                    {% if reseña.puntuacion >= 2 %}★{% else %}☆{% endif %}
+                    {% if reseña.puntuacion >= 3 %}★{% else %}☆{% endif %}
+                    {% if reseña.puntuacion >= 4 %}★{% else %}☆{% endif %}
+                    {% if reseña.puntuacion >= 5 %}★{% else %}☆{% endif %}
                     <span class="rating-number">{{ reseña.puntuacion }}/5</span>
                 </div>
                 
@@ -160,10 +130,7 @@
             <input type="email" placeholder="Tu email" required>
             <button type="submit">Suscribirme</button>
         </form>
-        <label class="newsletter-privacy">
-            <input type="checkbox" required>
-            Acepto la política de privacidad
-        </label>
+        
     </div>
 </div>
 {% endblock %}

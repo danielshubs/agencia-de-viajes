@@ -1,24 +1,23 @@
+
 document.addEventListener('DOMContentLoaded', function() {
-
-
-    // NEWSLETTER - Simple
-    const popup = document.getElementById('newsletterPopup');
-    if (popup) {
-        // Mostrar una vez al día
-        const lastShow = localStorage.getItem('newsLastShow');
-        const today = new Date().toDateString();
-
-        if (lastShow !== today) {
-            setTimeout(() => {
-                popup.style.display = 'flex';
-                localStorage.setItem('newsLastShow', today);
-            }, 2000);
+    const newsletterPopup = document.getElementById('newsletterPopup');
+    const closeButton = document.querySelector('.close-newsletter');
+    
+    //  Aparecer después de un tiempo
+    setTimeout(function() {
+        newsletterPopup.style.display = 'block';
+    }, 3000); //  después de 3 segundos
+    
+    
+    // Cerrar el popup al hacer clic en la X
+    closeButton.addEventListener('click', function() {
+        newsletterPopup.style.display = 'none';
+    });
+    
+    //Cerrar al hacer clic fuera del contenido
+    window.addEventListener('click', function(e) {
+        if (e.target === newsletterPopup) {
+            newsletterPopup.style.display = 'none';
         }
-
-        // Cerrar
-        document.querySelector('.close-newsletter').onclick = () => {
-            popup.style.display = 'none';
-        };
-    }
+    });
 });
-
