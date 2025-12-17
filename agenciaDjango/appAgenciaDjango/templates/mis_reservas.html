@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/mis_reservas.css' %}">
 {% endblock %}
-
+{% block extra_js %}
+<script src="{% static 'js/mis_reservas.js' %}"></script>
+{% endblock %}
 {% block titulo %}Mis Viajes{% endblock %}
 
 {% block contenido %}
