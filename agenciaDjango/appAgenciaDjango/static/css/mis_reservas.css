@@ -92,6 +92,17 @@
     border: 2px dashed #ddd;
 }
 
+/* Buscador */
+#barra-busqueda {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .reserva-card {

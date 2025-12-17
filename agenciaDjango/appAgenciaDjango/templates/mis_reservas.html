@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/mis_reservas.css' %}">
 {% endblock %}
 {% block extra_js %}
-<script src="{% static 'js/mis_reservas.js' %}"></script>
+<script src="{% static 'js/buscar_destinos_reservas.js' %}"></script>
 {% endblock %}
 {% block titulo %}Mis Viajes{% endblock %}
 
@@ -13,10 +13,11 @@
 
     <p class="user-greeting">Hola {{ user.username }}</p>
     <p class="user-info">Aquí tienes un resumen de tus reservas:</p>
+    <input type="text" id="barra-busqueda" name="barra-busqueda">
 
 <div class="reservas-grid">
     {% for reserva, id in reservas %} 
-    <div class="reserva-card">
+    <div class="reserva-card" data-nombre="{{ reserva.viajeID.destino.nombre }}">
         <div class="reserva-card-left">
             <h3 class="reserva-title">Reserva #{{ id }}</h3>
             <p>Destino: {{ reserva.viajeID.destino.nombre }}</p>
