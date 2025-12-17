@@ -165,7 +165,7 @@ def registro_procesar(request):
             )
             
             # Autenticar
-            auth_user = authenticate(request, username=email, password=password)
+            auth_user = authenticate(request, username=usuario.email, password=password)
             if auth_user:
                 django_login(request, auth_user)
                 messages.success(request, f'¡Registro exitoso! Bienvenido/a, {nombre}')
