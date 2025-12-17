@@ -119,14 +119,14 @@ input:focus, select:focus {
 }
 
 
-.error {
+.errorDiv {
   display: none;
   color: #e74c3c;
   font-size: 14px;
   margin-top: 6px;
 }
 
-.error.visible {
+.errorDiv.visible {
   display: block;
   border: 1px solid #e74c3c;
   padding: 5px;
